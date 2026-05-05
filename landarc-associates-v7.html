@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LandArc Associates Sdn. Bhd. — Landscape Architecture Malaysia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Syne:wght@400;700;800&family=Epilogue:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════ */
+:root{
+  --o:#E86A1A;--od:#C45512;--ol:#F5834A;
+  --g:#2A4A1E;--gm:#3D6B2C;--gl:#5A9143;
+  --bk:#0D0D0B;--bk2:#161612;--bk3:#1e1e18;
+  --wh:#F8F8F2;--ow:#EEE9E0;
+  --gr:#6B6B64;--grl:#A8A7A0;
+  /* Fluid padding: tight on phone, generous on 4K */
+  --px:clamp(16px,4vw,80px);
+  --nav-h:64px;
+  /* Fluid type scale */
+  --t-xs:clamp(9px,1.1vw,11px);
+  --t-sm:clamp(11px,1.3vw,13px);
+  --t-base:clamp(13px,1.5vw,15px);
+  --t-lg:clamp(16px,2vw,20px);
+  --t-xl:clamp(22px,3vw,32px);
+  --t-2xl:clamp(32px,5vw,62px);
+  --t-3xl:clamp(44px,7vw,92px);
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Epilogue',sans-serif;background:var(--wh);color:var(--bk);overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+a{cursor:pointer;}
+button{cursor:pointer;}
+
+/* desktop cursor (hidden on touch) */
+#dot,#ring{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .12s;}
+#dot{width:9px;height:9px;background:var(--o);border-radius:50%;z-index:9999;}
+#ring{width:34px;height:34px;border:1.5px solid rgba(232,106,26,.4);border-radius:50%;z-index:9998;transition:width .4s cubic-bezier(.23,1,.32,1),height .4s cubic-bezier(.23,1,.32,1);}
+@media(hover:hover){body{cursor:none;}a,button{cursor:none;}}
+@media(hover:none){#dot,#ring{display:none;}}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--nav-h);display:flex;align-items:center;
+  justify-content:space-between;padding:0 var(--px);
+  background:var(--bk);
+  transition:box-shadow .4s;
+}
+nav.s{box-shadow:0 1px 0 rgba(232,106,26,.15);}
+.nl{display:flex;align-items:center;height:54px;flex-shrink:0;}
+.nl img{height:100%;width:auto;object-fit:contain;max-width:200px;}
+
+/* Desktop menu */
+.nm{display:flex;gap:24px;list-style:none;}
+.nm a{font-family:'Syne',sans-serif;font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:rgba(248,248,242,.5);transition:color .25s;white-space:nowrap;}
+.nm a:hover{color:var(--o);}
+.n-cta{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:9px 22px;background:var(--o);color:var(--bk);transition:background .25s;white-space:nowrap;flex-shrink:0;}
+.n-cta:hover{background:var(--ol);}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;z-index:210;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wh);transition:transform .3s,opacity .3s;}
+nav.s .hamburger span{background:var(--wh);}
+/* Mobile drawer */
+.mob-menu{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+  background:var(--bk);z-index:190;flex-direction:column;
+  align-items:center;justify-content:center;gap:36px;
+  opacity:0;pointer-events:none;transition:opacity .35s;
+}
+.mob-menu.open{opacity:1;pointer-events:all;}
+.mob-menu a{font-family:'Fraunces',serif;font-size:clamp(28px,8vw,44px);font-weight:700;color:var(--wh);text-decoration:none;transition:color .2s;}
+.mob-menu a:hover,.mob-menu a:active{color:var(--o);}
+.mob-close{position:absolute;top:20px;right:var(--px);font-size:28px;background:none;border:none;color:var(--wh);font-family:'Syne',sans-serif;}
+.mob-cta{font-family:'Syne',sans-serif!important;font-size:13px!important;font-weight:700!important;letter-spacing:.2em;text-transform:uppercase;background:var(--o);color:var(--bk)!important;padding:14px 40px!important;}
+
+
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero{
+  padding-top:var(--nav-h);
+  min-height:100svh;
+  display:grid;grid-template-columns:1fr 1fr;
+  overflow:hidden;
+}
+.hl{
+  background:var(--bk);position:relative;z-index:2;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 var(--px) clamp(52px,8vw,88px);overflow:hidden;
+}
+.hl::before{
+  content:'L';position:absolute;bottom:-80px;left:-20px;
+  font-family:'Fraunces',serif;font-size:clamp(180px,40vw,480px);
+  font-weight:900;line-height:1;color:rgba(232,106,26,.05);
+  pointer-events:none;user-select:none;
+}
+.h-ey{display:flex;align-items:center;gap:12px;margin-bottom:clamp(18px,3vw,28px);opacity:0;animation:aup .8s .2s forwards;}
+.h-ey-bar{width:36px;height:2px;background:var(--o);flex-shrink:0;}
+.h-ey-txt{font-family:'Syne',sans-serif;font-size:clamp(9px,2vw,10px);font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--o);}
+.h-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(44px,7vw,92px);line-height:.92;color:var(--wh);margin-bottom:10px;opacity:0;animation:aup 1s .35s forwards;}
+.h-title .it{font-style:italic;font-weight:300;color:var(--o);display:block;}
+.h-title .gn{color:var(--gl);display:block;}
+.h-rule{width:100%;height:1px;background:rgba(248,248,242,.08);margin:clamp(16px,3vw,28px) 0;opacity:0;animation:aup .8s .5s forwards;}
+.h-desc{font-weight:300;font-size:clamp(13px,1.8vw,15px);line-height:1.8;color:rgba(248,248,242,.45);max-width:400px;margin-bottom:clamp(28px,4vw,44px);opacity:0;animation:aup .9s .6s forwards;}
+.h-btns{display:flex;gap:16px;align-items:center;flex-wrap:wrap;opacity:0;animation:aup .9s .75s forwards;}
+.btn-o{font-family:'Syne',sans-serif;font-size:clamp(10px,2vw,11px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:clamp(12px,2vw,15px) clamp(24px,4vw,40px);background:var(--o);color:var(--bk);transition:background .25s;display:inline-block;}
+.btn-o:hover{background:var(--ol);}
+.btn-gh{font-family:'Syne',sans-serif;font-size:clamp(10px,2vw,11px);font-weight:400;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:rgba(248,248,242,.4);display:flex;align-items:center;gap:8px;transition:color .25s;}
+.btn-gh::after{content:'';display:block;width:22px;height:1px;background:currentColor;transition:width .3s;}
+.btn-gh:hover{color:var(--gl);}
+.btn-gh:hover::after{width:40px;}
+/* Hero right image */
+.hr{position:relative;overflow:hidden;}
+.hr img{width:100%;height:100%;object-fit:cover;display:block;}
+.hr::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(13,13,11,.5) 0%,transparent 50%);}
+/* Orange stat sidebar */
+.h-stats{position:absolute;right:0;top:0;bottom:0;width:52px;background:var(--o);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:32px;z-index:3;opacity:0;animation:aleft .9s 1s forwards;}
+.hst-n{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--bk);writing-mode:vertical-rl;transform:rotate(180deg);}
+.hst-l{font-family:'Syne',sans-serif;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:rgba(13,13,11,.55);writing-mode:vertical-rl;transform:rotate(180deg);margin-top:4px;}
+/* Scroll cue */
+.h-scroll{position:absolute;left:var(--px);bottom:24px;z-index:4;display:flex;align-items:center;gap:8px;opacity:0;animation:aup .8s 1.2s forwards;}
+.h-scl{width:1px;height:44px;background:rgba(248,248,242,.15);position:relative;overflow:hidden;}
+.h-scf{position:absolute;top:-100%;width:100%;height:100%;background:var(--o);animation:spulse 2s 1.5s infinite;}
+.h-sct{font-family:'Syne',sans-serif;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(248,248,242,.3);writing-mode:vertical-rl;transform:rotate(180deg);}
+
+
+
+/* ═══════════════════════════════════════════
+   STRIP
+═══════════════════════════════════════════ */
+.strip{background:var(--o);height:40px;overflow:hidden;display:flex;align-items:center;}
+.strip-track{display:flex;animation:ticker 20s linear infinite;width:max-content;align-items:center;}
+.si{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--bk);padding:0 28px;opacity:.7;flex-shrink:0;}
+.sd{width:4px;height:4px;border-radius:50%;background:var(--bk);opacity:.25;flex-shrink:0;}
+
+/* ═══════════════════════════════════════════
+   SHARED SECTION UTILITIES
+═══════════════════════════════════════════ */
+.sec-pad{padding:clamp(64px,10vw,120px) var(--px);}
+.kicker{font-family:'Syne',sans-serif;font-size:10px;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:var(--o);display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.kicker::before{content:'';display:block;width:28px;height:2px;background:var(--o);flex-shrink:0;}
+.sec-t{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,62px);font-weight:700;line-height:.97;color:var(--wh);}
+.sec-t em{font-style:italic;font-weight:300;color:var(--o);}
+.sec-t.dk{color:var(--bk);}
+.sec-t.dk em{color:var(--o);}
+
+/* ═══════════════════════════════════════════
+   HISTORY / ABOUT
+═══════════════════════════════════════════ */
+.history{background:var(--bk2);}
+.hist-intro{display:grid;grid-template-columns:1fr 1fr;}
+.hist-img{position:relative;min-height:500px;overflow:hidden;}
+.hist-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hist-badge{position:absolute;bottom:0;left:0;background:var(--o);padding:24px 28px;}
+.hb-num{font-family:'Fraunces',serif;font-size:clamp(36px,5vw,52px);font-weight:700;color:var(--bk);line-height:1;}
+.hb-txt{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(13,13,11,.65);margin-top:4px;}
+.hist-copy{padding:clamp(48px,7vw,96px) clamp(24px,5vw,80px);display:flex;flex-direction:column;justify-content:center;background:var(--bk2);}
+.hist-body{font-weight:300;font-size:clamp(13px,1.8vw,15px);line-height:1.9;color:var(--grl);margin-top:24px;max-width:480px;}
+.hist-body+.hist-body{margin-top:14px;}
+.hist-body strong{font-weight:500;color:var(--wh);}
+
+/* About pillars */
+.about-pillars{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);}
+.ap{background:var(--bk2);padding:22px 20px;transition:background .3s;}
+.ap:hover{background:var(--bk3);}
+.ap-n{font-family:'Fraunces',serif;font-size:24px;font-weight:300;font-style:italic;color:rgba(232,106,26,.2);line-height:1;margin-bottom:6px;}
+.ap-t{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--wh);margin-bottom:5px;}
+.ap-d{font-size:12px;font-weight:300;line-height:1.6;color:var(--gr);}
+
+.hist-milestones{display:flex;align-items:center;gap:0;margin-top:28px;background:rgba(255,255,255,.04);padding:16px 20px;flex-wrap:wrap;gap:4px;}
+.hm{text-align:center;flex:1;min-width:60px;}
+.hm-yr{font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,24px);font-weight:700;color:var(--o);line-height:1;}
+.hm-t{font-family:'Syne',sans-serif;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gr);margin-top:3px;}
+.hm-sep{width:1px;height:36px;background:rgba(255,255,255,.1);flex-shrink:0;}
+
+
+/* ═══════════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════════ */
+.timeline{background:var(--bk);padding:clamp(48px,8vw,96px) var(--px);}
+.tl-head{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:var(--wh);text-align:center;margin-bottom:clamp(40px,6vw,64px);}
+.tl-head em{font-style:italic;font-weight:300;color:var(--o);}
+
+/* Desktop: alternating */
+.tl-track{position:relative;max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:0;}
+.tl-track::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(232,106,26,.2);transform:translateX(-50%);}
+.tl-item{display:grid;grid-template-columns:1fr 52px 1fr;align-items:start;padding-bottom:40px;}
+.tl-item .tl-l{text-align:right;padding-right:32px;}
+.tl-item .tl-r{padding-left:32px;}
+.tl-item:nth-child(even) .tl-l{order:3;text-align:left;padding-right:0;padding-left:32px;}
+.tl-item:nth-child(even) .tl-c{order:2;}
+.tl-item:nth-child(even) .tl-r{order:1;text-align:right;padding-left:0;padding-right:32px;}
+.tl-c{display:flex;justify-content:center;padding-top:6px;}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--o);border:3px solid var(--bk);box-shadow:0 0 0 2px var(--o);position:relative;z-index:1;flex-shrink:0;}
+.tl-yr{font-family:'Fraunces',serif;font-size:clamp(24px,3vw,32px);font-weight:700;color:var(--o);line-height:1;margin-bottom:5px;}
+.tl-evt{font-family:'Fraunces',serif;font-size:clamp(14px,2vw,17px);font-weight:700;color:var(--wh);line-height:1.2;margin-bottom:5px;}
+.tl-desc{font-size:12px;font-weight:300;line-height:1.65;color:var(--gr);}
+.tl-empty{display:block;}
+
+/* Mobile: single-column left line */
+@media(max-width:700px){
+  .tl-track::before{left:18px;}
+  .tl-item{grid-template-columns:36px 1fr;grid-template-rows:auto;}
+  .tl-item .tl-l{display:none;}
+  .tl-item .tl-c{order:1;padding-top:4px;}
+  .tl-item .tl-r,.tl-item:nth-child(even) .tl-r{order:2;text-align:left;padding-left:16px;padding-right:0;}
+  .tl-item:nth-child(even) .tl-l{display:none;}
+  .tl-empty{display:none;}
+}
+
+/* ═══════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════ */
+.services{background:var(--g);padding:clamp(64px,10vw,112px) var(--px);}
+.srv-hd{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:clamp(40px,6vw,72px);}
+.srv-intro{font-weight:300;font-size:clamp(13px,1.8vw,14px);line-height:1.85;color:rgba(248,248,242,.45);}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.25);}
+.srv-card{background:rgba(42,74,30,.6);padding:clamp(28px,4vw,44px) clamp(20px,3vw,36px);position:relative;overflow:hidden;transition:background .35s;}
+.srv-card:hover,.srv-card:active{background:rgba(42,74,30,.95);}
+.srv-card::after{content:attr(data-n);position:absolute;bottom:-20px;right:10px;font-family:'Fraunces',serif;font-size:90px;font-weight:900;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;}
+.srv-bar{width:32px;height:3px;background:var(--o);margin-bottom:24px;transform:scaleX(0);transform-origin:left;transition:transform .45s;}
+.srv-card:hover .srv-bar,.srv-card:active .srv-bar{transform:scaleX(1);}
+.srv-t{font-family:'Fraunces',serif;font-size:clamp(17px,2.2vw,21px);font-weight:700;color:var(--wh);line-height:1.2;margin-bottom:12px;}
+.srv-d{font-size:clamp(12px,1.5vw,13px);font-weight:300;line-height:1.8;color:rgba(248,248,242,.45);margin-bottom:20px;}
+.srv-tag{font-family:'Syne',sans-serif;font-size:9px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--ol);}
+
+
+
+
+
+/* ═══════════════════════════════════════════
+   PROJECTS — HORIZONTAL CAROUSEL
+═══════════════════════════════════════════ */
+.projects{padding:clamp(64px,10vw,112px) 0;background:var(--bk);}
+.proj-inner{padding:0 var(--px);}
+.proj-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(20px,3vw,36px);flex-wrap:wrap;gap:16px;}
+.proj-hd .kicker::before{background:var(--o);}
+.proj-controls{display:flex;align-items:center;gap:8px;}
+.all-link{font-family:'Syne',sans-serif;font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--o);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .3s;white-space:nowrap;margin-right:12px;}
+.all-link::after{content:'→';}
+.all-link:hover{gap:16px;}
+.car-btn{width:44px;height:44px;border:1px solid rgba(255,255,255,.15);background:transparent;color:var(--wh);font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s;flex-shrink:0;line-height:1;}
+.car-btn:hover,.car-btn:active{background:var(--o);border-color:var(--o);color:var(--bk);}
+.car-btn:disabled{opacity:.2;pointer-events:none;}
+.proj-tabs{display:flex;gap:2px;margin-bottom:clamp(20px,3vw,32px);flex-wrap:wrap;}
+.ptab{font-family:'Syne',sans-serif;font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;padding:9px 18px;background:rgba(255,255,255,.05);color:var(--grl);border:none;transition:background .25s,color .25s;white-space:nowrap;}
+.ptab.active,.ptab:hover{background:var(--o);color:var(--bk);}
+/* Carousel viewport */
+.car-vp{overflow:hidden;position:relative;}
+.car-vp::before,.car-vp::after{content:'';position:absolute;top:0;bottom:0;width:clamp(16px,3vw,48px);z-index:3;pointer-events:none;}
+.car-vp::before{left:0;background:linear-gradient(to right,var(--bk),transparent);}
+.car-vp::after{right:0;background:linear-gradient(to left,var(--bk),transparent);}
+/* Track — draggable flex row */
+.pg{
+  display:flex;gap:4px;
+  padding:4px var(--px) clamp(16px,2vw,20px);
+  cursor:grab;user-select:none;-webkit-user-select:none;
+  will-change:transform;
+}
+.pg.is-dragging{cursor:grabbing;transition:none !important;}
+/* Cards */
+.pi{
+  position:relative;overflow:hidden;flex-shrink:0;
+  width:clamp(240px,26vw,360px);
+  aspect-ratio:3/4;
+}
+.pi.wide{width:clamp(380px,42vw,560px);aspect-ratio:16/10;}
+.pi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.23,1,.32,1);pointer-events:none;}
+.pi:hover img{transform:scale(1.07);}
+.pi-info{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(13,13,11,.9) 0%,rgba(13,13,11,.1) 55%,transparent 100%);
+  opacity:0;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:clamp(14px,2vw,24px) clamp(14px,2vw,22px);
+  transition:opacity .35s;pointer-events:none;
+}
+.pi:hover .pi-info{opacity:1;}
+.pi::after{content:'';position:absolute;inset:0;border:2px solid var(--o);opacity:0;z-index:2;pointer-events:none;transition:opacity .35s;}
+.pi:hover::after{opacity:1;}
+.pi-cat{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--o);margin-bottom:6px;}
+.pi-name{font-family:'Fraunces',serif;font-size:clamp(13px,1.8vw,17px);font-weight:700;color:var(--wh);line-height:1.2;}
+.pi-loc{font-size:11px;font-weight:300;color:rgba(248,248,242,.45);margin-top:3px;}
+/* Progress bar */
+.car-progress{height:2px;background:rgba(255,255,255,.08);margin:0 var(--px);border-radius:1px;margin-top:20px;}
+.car-progress-fill{height:100%;background:var(--o);border-radius:1px;transition:width .4s ease;width:20%;}
+
+
+/* ═══════════════════════════════════════════
+   TEAM — CAROUSEL
+═══════════════════════════════════════════ */
+.team{background:var(--bk2);padding:clamp(64px,10vw,112px) 0;}
+.team-inner{padding:0 var(--px);}
+.team-hd{margin-bottom:clamp(36px,5vw,64px);}
+
+/* Directors */
+.directors-wrap{overflow:hidden;position:relative;margin-bottom:4px;}
+.directors-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(to right,var(--bk2),transparent);z-index:2;pointer-events:none;}
+.directors-wrap::after{content:'';position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(to left,var(--bk2),transparent);pointer-events:none;z-index:2;}
+.directors{display:flex;gap:3px;padding:0 var(--px) 4px;cursor:grab;user-select:none;-webkit-user-select:none;}
+.directors.is-dragging{cursor:grabbing;transition:none!important;}
+.dir-card{background:var(--bk3);display:grid;grid-template-columns:clamp(130px,16vw,210px) 1fr;overflow:hidden;transition:background .3s;flex-shrink:0;width:clamp(360px,48vw,640px);}
+.dir-card:hover{background:#262620;}
+.dir-img{position:relative;overflow:hidden;}
+.dir-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .6s;min-height:240px;}
+.dir-card:hover .dir-img img{transform:scale(1.05);}
+.dir-copy{padding:clamp(24px,3vw,40px) clamp(20px,2.5vw,36px);display:flex;flex-direction:column;justify-content:center;}
+.dir-role{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--o);margin-bottom:10px;}
+.dir-name{font-family:'Fraunces',serif;font-size:clamp(18px,2.2vw,26px);font-weight:700;color:var(--wh);line-height:1.1;margin-bottom:6px;}
+.dir-cred{font-family:'Syne',sans-serif;font-size:clamp(9px,1.1vw,10px);letter-spacing:.1em;color:var(--gl);margin-bottom:14px;}
+.dir-bio{font-size:clamp(12px,1.4vw,13px);font-weight:300;line-height:1.8;color:var(--gr);}
+
+/* Section header with controls */
+.team-sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:clamp(16px,2vw,28px);padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.06);}
+.team-ctrl{display:flex;gap:6px;}
+.tcar-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--wh);font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s;flex-shrink:0;line-height:1;cursor:pointer;}
+.tcar-btn:hover{background:var(--o);border-color:var(--o);color:var(--bk);}
+
+/* Staff carousel */
+.staff-car-wrap{overflow:hidden;position:relative;}
+.staff-car-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(to right,var(--bk2),transparent);z-index:2;pointer-events:none;}
+.staff-car-wrap::after{content:'';position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(to left,var(--bk2),transparent);pointer-events:none;z-index:2;}
+.staff-track{display:flex;gap:3px;padding:0 var(--px) 4px;cursor:grab;user-select:none;-webkit-user-select:none;}
+.staff-track.is-dragging{cursor:grabbing;transition:none!important;}
+
+/* Clean larger staff cards */
+.staff-card{background:var(--bk3);overflow:hidden;transition:background .3s;flex-shrink:0;width:clamp(160px,16vw,220px);position:relative;}
+.staff-card:hover{background:#222218;}
+.staff-img{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--bk);}
+.staff-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .55s;}
+.staff-card:hover .staff-img img{transform:scale(1.07);}
+.staff-init{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--o);background:var(--bk);}
+.staff-info{padding:clamp(12px,1.6vw,18px) clamp(12px,1.6vw,16px);}
+.staff-name{font-family:'Fraunces',serif;font-size:clamp(12px,1.4vw,14px);font-weight:700;color:var(--wh);line-height:1.25;margin-bottom:5px;}
+.staff-role{font-family:'Syne',sans-serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--o);}
+
+/* Accent line on hover */
+.staff-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--o);transition:width .35s;}
+.staff-card:hover::after{width:100%;}
+
+/* section spacing */
+.staff-section-gap{margin-top:clamp(40px,6vw,64px);}
+
+/* ═══════════════════════════════════════════
+   AWARDS
+═══════════════════════════════════════════ */
+.awards{background:var(--bk);overflow:hidden;}
+/* Hero banner */
+.aw-hero{background:var(--o);padding:clamp(48px,8vw,80px) var(--px);position:relative;overflow:hidden;}
+.aw-hero::before{content:'';position:absolute;top:-120px;right:-120px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,.06);}
+.aw-hero::after{content:'';position:absolute;bottom:-80px;left:40%;width:300px;height:300px;border-radius:50%;background:rgba(13,13,11,.08);}
+.aw-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,60px);align-items:center;}
+.aw-hero-kicker{font-family:'Syne',sans-serif;font-size:10px;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:rgba(13,13,11,.6);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.aw-hero-kicker::before{content:'';display:block;width:28px;height:2px;background:rgba(13,13,11,.4);}
+.aw-hero-title{font-family:'Fraunces',serif;font-size:clamp(36px,5vw,72px);font-weight:900;line-height:.92;color:var(--bk);}
+.aw-hero-sub{font-weight:300;font-size:clamp(13px,1.8vw,15px);line-height:1.8;color:rgba(13,13,11,.6);margin-top:18px;max-width:420px;}
+.aw-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.aw-stat{background:rgba(13,13,11,.1);padding:clamp(20px,3vw,32px) clamp(14px,2vw,24px);text-align:center;}
+.aw-stat-n{font-family:'Fraunces',serif;font-size:clamp(36px,5vw,56px);font-weight:900;color:var(--bk);line-height:1;}
+.aw-stat-l{font-family:'Syne',sans-serif;font-size:9px;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:rgba(13,13,11,.5);margin-top:6px;}
+/* Cards grid */
+.aw-grid{padding:clamp(32px,5vw,60px) var(--px);display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--bk2);}
+.aw-card{background:var(--bk);padding:clamp(24px,3vw,40px) clamp(18px,2.5vw,28px);position:relative;transition:transform .3s,box-shadow .3s;}
+.aw-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(232,106,26,.15);}
+.aw-card.gold{border-top:3px solid #F0B429;}
+.aw-card.honour{border-top:3px solid var(--o);}
+.aw-trophy{margin-bottom:20px;}
+.aw-badge{display:inline-block;font-family:'Syne',sans-serif;font-size:8px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px;}
+.aw-badge.gold{background:rgba(240,180,41,.12);color:#F0B429;}
+.aw-badge.honour{background:rgba(232,106,26,.12);color:var(--ol);}
+.aw-org{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gr);margin-bottom:8px;}
+.aw-yr{font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,38px);font-weight:700;color:var(--o);line-height:1;margin-bottom:10px;}
+.aw-proj{font-family:'Fraunces',serif;font-size:clamp(14px,1.8vw,17px);font-weight:700;color:var(--wh);line-height:1.2;margin-bottom:7px;}
+.aw-detail{font-size:11px;font-weight:300;line-height:1.6;color:var(--gr);}
+
+
+
+/* ═══════════════════════════════════════════
+   CLIENTS — CAROUSEL
+═══════════════════════════════════════════ */
+.clients{background:var(--bk);padding:clamp(64px,10vw,112px) 0;}
+.clients-hd{text-align:center;margin-bottom:clamp(40px,6vw,64px);padding:0 var(--px);}
+.cl-title{font-family:'Fraunces',serif;font-size:clamp(28px,4.5vw,52px);font-weight:700;line-height:1;color:var(--wh);margin-bottom:16px;}
+.cl-title em{font-style:italic;font-weight:300;color:var(--o);}
+.cl-sub{font-weight:300;font-size:clamp(13px,1.7vw,15px);line-height:1.85;color:rgba(248,248,242,.4);max-width:560px;margin:0 auto;}
+
+/* Category header row */
+.cl-cat-row{display:flex;align-items:center;justify-content:space-between;padding:0 var(--px);margin-bottom:clamp(20px,3vw,28px);}
+.cl-cat-label{display:flex;align-items:center;gap:14px;}
+.cl-cat-bar{display:block;width:28px;height:2px;background:var(--o);flex-shrink:0;}
+.cl-cat-title{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--o);}
+.cl-ctrl{display:flex;gap:6px;}
+
+/* Carousel track */
+.cl-car-wrap{position:relative;overflow:hidden;margin-bottom:clamp(40px,6vw,64px);}
+.cl-car-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(to right,var(--bk),transparent);z-index:2;pointer-events:none;}
+.cl-car-wrap::after{content:'';position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(to left,var(--bk),transparent);z-index:2;pointer-events:none;}
+.cl-track{display:flex;gap:1px;padding:0 var(--px) 4px;cursor:grab;user-select:none;-webkit-user-select:none;transition:transform .0s;}
+.cl-track.is-dragging{cursor:grabbing;transition:none!important;}
+
+/* Logo cards */
+.cl-logo{background:var(--bk2);padding:clamp(22px,3.5vw,36px) clamp(20px,3vw,32px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:background .3s;flex-shrink:0;width:clamp(150px,15vw,200px);}
+.cl-logo:hover{background:var(--bk3);}
+.cl-logo img{height:46px;width:auto;max-width:130px;object-fit:contain;filter:grayscale(100%) brightness(.6);transition:filter .35s,transform .35s;}
+.cl-logo:hover img{filter:grayscale(0%) brightness(1);transform:scale(1.08);}
+.cl-name{font-family:'Syne',sans-serif;font-size:8px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,248,242,.22);text-align:center;line-height:1.5;}
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+.contact{display:grid;grid-template-columns:1fr 1fr;}
+.contact-l{background:var(--bk);padding:clamp(48px,7vw,96px) var(--px);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.contact-l::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(232,106,26,.07) 0%,transparent 70%);pointer-events:none;}
+.contact-l .kicker,.contact-l .kicker::before{color:var(--o);background:var(--o);}
+.c-blurb{font-weight:300;font-size:clamp(13px,1.8vw,14px);line-height:1.9;color:var(--gr);max-width:380px;margin:20px 0 40px;}
+.cd{display:flex;flex-direction:column;gap:16px;}
+.cd-r{display:flex;gap:16px;align-items:flex-start;}
+.cd-l{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--o);min-width:64px;padding-top:2px;flex-shrink:0;}
+.cd-v{font-size:13px;font-weight:300;color:var(--grl);line-height:1.6;}
+.contact-r{background:var(--ow);padding:clamp(48px,7vw,96px) var(--px);display:flex;flex-direction:column;justify-content:center;}
+.cf-t{font-family:'Fraunces',serif;font-size:clamp(24px,3.5vw,32px);font-weight:700;color:var(--bk);margin-bottom:32px;}
+.cf2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.cfg{display:flex;flex-direction:column;gap:7px;margin-bottom:18px;}
+.cfg.s2{grid-column:1/-1;}
+.cfl{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gr);}
+.cfi,.cft,.cfs{font-family:'Epilogue',sans-serif;font-size:14px;font-weight:300;color:var(--bk);background:transparent;border:none;border-bottom:1.5px solid rgba(13,13,11,.15);padding:9px 0;outline:none;transition:border-color .3s;width:100%;}
+.cfi:focus,.cft:focus,.cfs:focus{border-color:var(--o);}
+.cft{resize:none;height:68px;}
+.cfb{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:clamp(12px,2vw,16px) clamp(28px,4vw,44px);background:var(--o);color:var(--bk);border:none;transition:background .25s;margin-top:6px;width:100%;}
+.cfb:hover,.cfb:active{background:var(--ol);}
+
+
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{background:var(--bk2);padding:clamp(48px,7vw,80px) var(--px) clamp(24px,4vw,40px);}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,52px);padding-bottom:clamp(32px,5vw,52px);border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:clamp(20px,3vw,36px);}
+.ft-logo{height:38px;display:block;margin-bottom:18px;}
+.ft-tag{font-size:13px;font-weight:300;color:rgba(255,255,255,.28);line-height:1.8;max-width:260px;margin-bottom:24px;}
+.ft-socs{display:flex;gap:10px;}
+.ft-soc{width:34px;height:34px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);text-decoration:none;font-size:10px;font-family:'Syne',sans-serif;font-weight:700;transition:all .25s;}
+.ft-soc:hover{border-color:var(--o);color:var(--o);}
+.ft-ch{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--o);margin-bottom:18px;}
+.ft-ls{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.ft-ls a{font-size:12px;font-weight:300;color:rgba(255,255,255,.3);text-decoration:none;transition:color .25s;}
+.ft-ls a:hover{color:var(--wh);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.ft-c,.ft-r{font-size:11px;font-weight:300;color:rgba(255,255,255,.18);}
+.ft-r{font-style:italic;}
+
+
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS & REVEALS
+═══════════════════════════════════════════ */
+@keyframes aup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes aleft{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes spulse{0%{top:-100%}100%{top:100%}}
+
+.rv{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease;}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}
+.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}.rv.d5{transition-delay:.5s}
+
+/* touch-device: reduce motion, always show reveals */
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+}
+
+/* ═══════════════════════════════════════════
+   PROJECT SHOWCASE MODAL
+═══════════════════════════════════════════ */
+.showcase-overlay{
+  position:fixed;inset:0;z-index:1000;
+  background:var(--bk);
+  opacity:0;pointer-events:none;
+  transition:opacity .45s cubic-bezier(.23,1,.32,1);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.showcase-overlay.open{opacity:1;pointer-events:all;}
+.showcase-inner{min-height:100vh;display:flex;flex-direction:column;}
+
+/* Showcase nav bar */
+.sc-nav{
+  position:sticky;top:0;z-index:10;
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--px);background:rgba(13,13,11,.92);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(232,106,26,.12);
+}
+.sc-back{display:flex;align-items:center;gap:10px;background:none;border:none;color:var(--grl);font-family:'Syne',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;transition:color .2s;}
+.sc-back:hover{color:var(--o);}
+.sc-back::before{content:'←';font-size:14px;}
+.sc-proj-title{font-family:'Fraunces',serif;font-size:clamp(13px,1.8vw,17px);font-weight:700;color:var(--wh);text-align:center;flex:1;padding:0 16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sc-count{font-family:'Syne',sans-serif;font-size:10px;letter-spacing:.2em;color:var(--o);white-space:nowrap;}
+
+/* Hero image */
+.sc-hero{position:relative;height:65vh;overflow:hidden;flex-shrink:0;}
+.sc-hero img{width:100%;height:100%;object-fit:cover;display:block;}
+.sc-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(13,13,11,.85) 100%);}
+.sc-hero-info{position:absolute;bottom:0;left:0;right:0;padding:clamp(24px,4vw,48px) var(--px);z-index:2;}
+.sc-cat-badge{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--o);display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.sc-cat-badge::before{content:'';display:block;width:20px;height:1px;background:var(--o);}
+.sc-h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,64px);font-weight:900;color:var(--wh);line-height:.95;margin-bottom:8px;}
+.sc-loc{font-family:'Syne',sans-serif;font-size:clamp(10px,1.4vw,12px);letter-spacing:.2em;text-transform:uppercase;color:rgba(248,248,242,.45);}
+
+/* Meta strip */
+.sc-meta{display:flex;gap:0;background:var(--bk2);border-bottom:1px solid rgba(255,255,255,.05);}
+.sc-meta-item{flex:1;padding:clamp(14px,2vw,22px) clamp(16px,2.5vw,28px);border-right:1px solid rgba(255,255,255,.05);}
+.sc-meta-item:last-child{border-right:none;}
+.sc-meta-lbl{font-family:'Syne',sans-serif;font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--o);margin-bottom:5px;}
+.sc-meta-val{font-family:'Fraunces',serif;font-size:clamp(13px,1.8vw,16px);font-weight:700;color:var(--wh);}
+
+
+/* Photo gallery */
+.sc-gallery{padding:clamp(32px,5vw,64px) var(--px);}
+.sc-gallery-lbl{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gr);margin-bottom:16px;}
+.sc-gallery-grid{display:grid;gap:3px;}
+.sc-gallery-grid.imgs-1{grid-template-columns:1fr;}
+.sc-gallery-grid.imgs-2{grid-template-columns:1fr 1fr;}
+.sc-gallery-grid.imgs-3{grid-template-columns:2fr 1fr;grid-template-rows:auto auto;}
+.sc-gallery-grid.imgs-3 .sc-img:first-child{grid-row:1/3;}
+.sc-gallery-grid.imgs-4,.sc-gallery-grid.imgs-5,.sc-gallery-grid.imgs-6{grid-template-columns:repeat(3,1fr);}
+.sc-gallery-grid.imgs-4 .sc-img:first-child,
+.sc-gallery-grid.imgs-5 .sc-img:first-child,
+.sc-gallery-grid.imgs-6 .sc-img:first-child{grid-column:1/3;}
+.sc-gallery-grid .sc-img{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:zoom-in;}
+.sc-gallery-grid .sc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.23,1,.32,1);image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;}
+.sc-gallery-grid .sc-img:hover img{transform:scale(1.05);}
+
+
+/* Description */
+.sc-desc{padding:0 var(--px) clamp(48px,7vw,80px);max-width:700px;}
+.sc-desc-title{font-family:'Fraunces',serif;font-size:clamp(20px,2.8vw,28px);font-weight:700;color:var(--wh);margin-bottom:16px;}
+.sc-desc-body{font-weight:300;font-size:clamp(13px,1.6vw,15px);line-height:1.9;color:var(--gr);}
+
+/* Nav arrows between projects */
+.sc-proj-nav{display:flex;border-top:1px solid rgba(255,255,255,.06);margin-top:auto;}
+.sc-pn{flex:1;padding:clamp(20px,3vw,36px) var(--px);background:var(--bk2);display:flex;flex-direction:column;gap:6px;cursor:pointer;border:none;text-align:left;transition:background .3s;}
+.sc-pn:hover{background:var(--bk3);}
+.sc-pn:last-child{text-align:right;border-left:1px solid rgba(255,255,255,.06);}
+.sc-pn-dir{font-family:'Syne',sans-serif;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:var(--o);}
+.sc-pn-name{font-family:'Fraunces',serif;font-size:clamp(14px,1.8vw,19px);font-weight:700;color:var(--wh);line-height:1.15;}
+.sc-pn-loc{font-size:11px;font-weight:300;color:var(--gr);}
+
+/* Lightbox */
+.sc-lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+.sc-lightbox.open{opacity:1;pointer-events:all;}
+.sc-lightbox img{max-width:95vw;max-height:92vh;object-fit:contain;}
+.sc-lb-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--wh);font-size:28px;font-family:'Syne',sans-serif;opacity:.6;transition:opacity .2s;}
+.sc-lb-close:hover{opacity:1;}
+
+/* ═══════════════════════════════════════════
+   VISUAL POLISH — all screen sizes
+═══════════════════════════════════════════ */
+
+/* Smooth scrolling & selection */
+::selection{background:rgba(232,106,26,.25);color:var(--wh);}
+:focus-visible{outline:2px solid var(--o);outline-offset:3px;}
+
+/* Section alternation — subtle depth */
+.services{position:relative;}
+.services::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(61,107,44,.15),transparent 70%);pointer-events:none;}
+
+/* Hero glow pulse */
+.hl::after{content:'';position:absolute;top:30%;right:-10%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(232,106,26,.06) 0%,transparent 70%);pointer-events:none;animation:glow 6s ease-in-out infinite;}
+@keyframes glow{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.2);}}
+
+/* Project card cursor indicator */
+.pi::before{content:'View';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);background:var(--o);color:var(--bk);font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:8px 16px;z-index:3;transition:transform .3s cubic-bezier(.23,1,.32,1),opacity .3s;pointer-events:none;opacity:0;}
+.pi:hover::before{transform:translate(-50%,-50%) scale(1);opacity:1;}
+
+/* Staff card number overlay */
+.staff-card .staff-img::before{content:attr(data-num);position:absolute;top:8px;left:10px;font-family:'Fraunces',serif;font-size:11px;font-weight:700;color:rgba(248,248,242,.3);z-index:1;pointer-events:none;}
+
+/* Awards card shimmer on hover */
+.aw-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(232,106,26,.04) 100%);opacity:0;transition:opacity .4s;pointer-events:none;}
+.aw-card:hover::before{opacity:1;}
+
+/* Services card — number watermark animate */
+.srv-card::after{transition:transform .5s cubic-bezier(.23,1,.32,1),opacity .3s;}
+.srv-card:hover::after{transform:scale(1.15) translateY(-8px);opacity:.07;}
+
+/* Milestone hover */
+.hm{transition:transform .25s;}
+.hm:hover{transform:translateY(-3px);}
+.hm:hover .hm-yr{color:var(--ol);}
+
+/* Director card left accent */
+.dir-card{border-left:3px solid transparent;transition:background .3s,border-color .3s;}
+.dir-card:hover{border-left-color:var(--o);}
+
+/* Client logo card bottom accent */
+.cl-logo{position:relative;}
+.cl-logo::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--o);transition:width .4s cubic-bezier(.23,1,.32,1);}
+.cl-logo:hover::after{width:100%;}
+
+/* Smooth image load */
+img{transition:opacity .3s;}
+img[loading="lazy"]{opacity:0;}
+img.loaded{opacity:1;}
+
+/* Section dividers — subtle orange accent line */
+.projects,.team,.clients,.awards{position:relative;}
+.projects::before,.clients::before{content:'';position:absolute;top:0;left:var(--px);right:var(--px);height:1px;background:linear-gradient(to right,transparent,rgba(232,106,26,.15),transparent);}
+
+/* Showcase overlay scroll behaviour */
+.showcase-overlay{scroll-behavior:smooth;}
+
+/* Nav active state indicator */
+.nm a{position:relative;}
+.nm a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--o);transition:width .3s;}
+.nm a:hover::after{width:100%;}
+
+/* Strip shimmer */
+.strip-track{position:relative;}
+
+/* Contact form input focus glow */
+.cfi:focus,.cft:focus,.cfs:focus{
+  border-color:var(--o);
+  box-shadow:0 2px 0 rgba(232,106,26,.15);
+}
+
+/* Footer link underline animation */
+.ft-ls a{position:relative;}
+.ft-ls a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--wh);transition:width .3s;}
+.ft-ls a:hover::after{width:100%;}
+
+/* Scroll reveal easing improvement */
+.rv{transition:opacity .8s cubic-bezier(.23,1,.32,1),transform .8s cubic-bezier(.23,1,.32,1);}
+.rv.in{opacity:1;transform:translateY(0);}
+
+/* Large screen text refinement */
+@media(min-width:1600px){
+  body{font-size:15px;}
+  .h-desc{font-size:16px;line-height:1.9;}
+  .srv-d{font-size:14px;}
+  .dir-bio{font-size:14px;}
+}
+
+/* Touch device hover removal (performance) */
+@media(hover:none){
+  .pi::before{display:none;}
+  .srv-card::after{opacity:.04;}
+  .staff-card::after,.cl-logo::after,.dir-card{border-left:none;}
+}
+═══════════════════════════════════════════ */
+@media(min-width:1920px){
+  :root{--nav-h:72px;}
+  .hero{min-height:100svh;}
+  .h-title{font-size:min(7vw,120px);}
+  .sec-t{font-size:min(5vw,76px);}
+  .srv-grid{grid-template-columns:repeat(3,1fr);}
+  .aw-grid{grid-template-columns:repeat(5,1fr);}
+  .pi{width:min(26vw,440px);}
+  .pi.wide{width:min(42vw,660px);}
+  .staff-card{width:min(16vw,260px);}
+  .cl-logo{width:min(15vw,240px);}
+  .dir-card{width:min(48vw,760px);}
+  .ft{grid-template-columns:2.5fr 1fr 1fr 1fr;}
+  .sc-hero{height:70vh;}
+}
+
+/* ═══════════════════════════════════════════
+   LARGE DESKTOP (1400-1919px)
+═══════════════════════════════════════════ */
+@media(min-width:1400px) and (max-width:1919px){
+  .hero{min-height:100svh;}
+  .aw-grid{grid-template-columns:repeat(5,1fr);}
+  .srv-grid{grid-template-columns:repeat(3,1fr);}
+}
+
+/* ═══════════════════════════════════════════
+   STANDARD DESKTOP (1200-1399px)
+═══════════════════════════════════════════ */
+@media(min-width:1200px) and (max-width:1399px){
+  .aw-grid{grid-template-columns:repeat(4,1fr);}
+}
+
+/* ═══════════════════════════════════════════
+   TABLET LANDSCAPE (901-1199px)
+═══════════════════════════════════════════ */
+@media(min-width:901px) and (max-width:1199px){
+  :root{--px:clamp(20px,3.5vw,48px);}
+  .hero{grid-template-columns:55% 45%;}
+  .h-title{font-size:clamp(40px,5.5vw,72px);}
+  .srv-grid{grid-template-columns:repeat(3,1fr);}
+  .aw-grid{grid-template-columns:repeat(3,1fr);}
+  .hist-intro{grid-template-columns:45% 55%;}
+  .ft{grid-template-columns:1.5fr 1fr 1fr 1fr;}
+  .pi{width:clamp(220px,24vw,320px);}
+  .pi.wide{width:clamp(340px,38vw,500px);}
+  .staff-card{width:clamp(150px,14vw,200px);}
+  .dir-card{width:clamp(340px,46vw,580px);}
+}
+
+/* ═══════════════════════════════════════════
+   TABLET PORTRAIT (601-900px)
+═══════════════════════════════════════════ */
+@media(min-width:601px) and (max-width:900px){
+  :root{--px:clamp(16px,3vw,32px);--nav-h:58px;}
+
+  /* Nav */
+  .nm,.n-cta{display:none;}
+  .hamburger{display:flex;}
+  .mob-menu{display:flex;}
+
+  /* Hero */
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hl{padding:40px var(--px) 56px;min-height:58vw;}
+  .hr{height:52vw;min-height:280px;}
+  .hr::after{background:none;}
+  .h-stats{display:none;}
+  .h-scroll{display:none;}
+  .h-title{font-size:clamp(36px,6vw,58px);}
+  .h-rule{display:none;}
+
+  /* History */
+  .hist-intro{grid-template-columns:1fr;}
+  .hist-img{min-height:300px;}
+  .hist-copy{padding:40px var(--px);}
+  .about-pillars{grid-template-columns:1fr 1fr;}
+
+  /* Services */
+  .srv-hd{grid-template-columns:1fr;}
+  .srv-grid{grid-template-columns:1fr 1fr;}
+
+  /* Projects */
+  .pi{width:clamp(200px,42vw,320px);}
+  .pi.wide{width:clamp(280px,62vw,460px);aspect-ratio:4/3;}
+  .pi-info{opacity:1;}
+  .pi::after{display:none;}
+
+  /* Team */
+  .dir-card{grid-template-columns:140px 1fr;width:clamp(320px,72vw,520px);}
+  .staff-card{width:clamp(140px,18vw,180px);}
+
+  /* Awards */
+  .aw-hero-inner{grid-template-columns:1fr;}
+  .aw-stats{grid-template-columns:repeat(3,1fr);}
+  .aw-grid{grid-template-columns:1fr 1fr;}
+
+  /* Clients */
+  .cl-logo{width:clamp(130px,18vw,180px);}
+
+  /* Contact */
+  .contact{grid-template-columns:1fr;}
+
+  /* Footer */
+  .ft{grid-template-columns:1fr 1fr;gap:28px;}
+  .ft>div:first-child{grid-column:1/-1;}
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE (≤600px) — comprehensive polish
+═══════════════════════════════════════════ */
+@media(max-width:600px){
+  :root{--px:18px;--nav-h:56px;}
+
+  /* Nav */
+  .nl{height:40px;}
+  .nm,.n-cta{display:none;}
+  .hamburger{display:flex;}
+  .mob-menu{display:flex;}
+  .mob-menu a{font-size:clamp(26px,8vw,40px);}
+
+  /* Hero */
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hl{padding:28px var(--px) 44px;}
+  .hr{height:56vw;min-height:220px;}
+  .hr::after{background:none;}
+  .h-stats,.h-scroll{display:none;}
+  .h-title{font-size:clamp(36px,10vw,52px);line-height:.9;}
+  .h-rule{display:none;}
+  .h-desc{font-size:13px;max-width:100%;}
+  .h-btns{flex-direction:column;align-items:flex-start;gap:12px;}
+  .btn-o{font-size:10px;padding:13px 28px;}
+
+  /* Strip */
+  .strip{height:36px;}
+  .si{font-size:9px;padding:0 18px;}
+
+  /* Sections */
+  .sec-pad{padding:48px var(--px);}
+  .kicker{font-size:9px;margin-bottom:14px;}
+  .sec-t{font-size:clamp(28px,9vw,40px);}
+
+  /* History */
+  .hist-intro{grid-template-columns:1fr;}
+  .hist-img{min-height:240px;}
+  .hist-copy{padding:32px var(--px);}
+  .about-pillars{grid-template-columns:1fr;margin-top:28px;}
+  .hm-sep{display:none;}
+  .hm{flex:1 1 calc(33% - 8px);}
+  .hist-milestones{padding:12px 14px;gap:0;}
+
+  /* Services */
+  .srv-hd{grid-template-columns:1fr;gap:16px;margin-bottom:28px;}
+  .srv-grid{grid-template-columns:1fr;}
+  .srv-card{padding:28px 22px;}
+
+  /* Projects */
+  .proj-hd{flex-direction:column;align-items:flex-start;gap:12px;}
+  .proj-tabs{gap:1px;}
+  .ptab{font-size:9px;padding:8px 14px;}
+  .pi{width:78vw;}
+  .pi.wide{width:88vw;aspect-ratio:4/3;}
+  .pi-info{opacity:1;}
+  .pi::after{display:none;}
+
+  /* Team */
+  .dir-card{grid-template-columns:110px 1fr;width:88vw;}
+  .dir-img img{min-height:180px;}
+  .dir-copy{padding:18px 16px;}
+  .dir-name{font-size:16px;}
+  .dir-bio{font-size:11px;line-height:1.65;}
+  .team-sec-hd{padding-bottom:10px;margin-bottom:16px;}
+  .staff-card{width:clamp(130px,38vw,180px);}
+  .staff-name{font-size:11px;}
+  .staff-role{font-size:7px;}
+  .staff-section-gap{margin-top:36px;}
+
+  /* Awards */
+  .aw-hero-inner{grid-template-columns:1fr;gap:28px;}
+  .aw-hero-title{font-size:clamp(32px,9vw,52px);}
+  .aw-stats{grid-template-columns:repeat(3,1fr);}
+  .aw-stat-n{font-size:clamp(28px,7vw,40px);}
+  .aw-grid{grid-template-columns:1fr;padding:24px var(--px);}
+
+  /* Clients */
+  .cl-logo{width:clamp(120px,42vw,160px);padding:18px 14px;}
+  .cl-logo img{height:36px;}
+  .cl-name{font-size:7px;}
+  .cl-cat-row{padding:0 var(--px);margin-bottom:16px;}
+  .cl-car-wrap{margin-bottom:32px;}
+  .cl-car-wrap::before,.cl-car-wrap::after{width:32px;}
+
+  /* Showcase */
+  .sc-hero{height:52vw;min-height:240px;}
+  .sc-h1{font-size:clamp(22px,6vw,40px);}
+  .sc-meta{flex-wrap:wrap;}
+  .sc-meta-item{flex:1 1 50%;}
+  .sc-proj-nav{flex-direction:column;}
+  .sc-pn:last-child{text-align:left;border-left:none;border-top:1px solid rgba(255,255,255,.06);}
+  .sc-gallery{padding:24px var(--px);}
+
+  /* Contact */
+  .contact{grid-template-columns:1fr;}
+  .cf2{grid-template-columns:1fr;}
+  .cfg.s2{grid-column:1;}
+  .contact-l{padding:40px var(--px);}
+  .contact-r{padding:40px var(--px);}
+
+  /* Footer */
+  .ft{grid-template-columns:1fr;}
+  .ft-bot{flex-direction:column;align-items:flex-start;gap:6px;}
+
+  /* Carousel controls */
+  .tcar-btn,.car-btn{width:34px;height:34px;font-size:14px;}
+  .staff-car-wrap::before,.staff-car-wrap::after,
+  .directors-wrap::before,.directors-wrap::after{width:32px;}
+}
+
+/* ═══════════════════════════════════════════
+   TINY PHONES (≤380px)
+═══════════════════════════════════════════ */
+@media(max-width:380px){
+  :root{--px:14px;}
+  .h-title{font-size:32px;}
+  .sec-t{font-size:26px;}
+  .pi{width:84vw;}
+  .pi.wide{width:92vw;}
+  .dir-card{width:92vw;grid-template-columns:90px 1fr;}
+  .staff-card{width:42vw;}
+  .cl-logo{width:44vw;}
+  .aw-stats{grid-template-columns:1fr 1fr;}
+  .aw-stat:last-child{grid-column:1/-1;}
+  .mob-menu a{font-size:28px;}
+}
+
+/* ═══════════════════════════════════════════
+   HIGH-DPI / RETINA enhancement
+═══════════════════════════════════════════ */
+@media(-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){
+  .hr img,.hist-img img,.pi img,.staff-img img,.dir-img img,.sc-gallery-grid .sc-img img,.sc-hero img{
+    image-rendering:auto;
+    -webkit-font-smoothing:antialiased;
+  }
+  .staff-card,.cl-logo,.dir-card{
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════ */
+@media print{
+  #dot,#ring,.hamburger,.mob-menu,.strip,.car-btn,.tcar-btn,.n-cta{display:none!important;}
+  nav{position:static;background:white;}
+  .hero{min-height:auto;grid-template-columns:1fr;}
+  .showcase-overlay{display:none!important;}
+}
+
+/* ═══════════════════════════════════════════
+   REDUCED MOTION accessibility
+═══════════════════════════════════════════ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  .strip-track{animation:none;}
+}
+</style>
+</head>
+<body>
+<div id="dot"></div><div id="ring"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <a href="#" class="nl" aria-label="LandArc Home">
+    <img src="https://landarc97.com/wp-content/uploads/2024/09/Heading-3.png" alt="LandArc Associates">
+  </a>
+  <ul class="nm" role="list">
+    <li><a href="#history">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#clients">Clients</a></li>
+  </ul>
+  <a href="#contact" class="n-cta">Enquire Now</a>
+  <button class="hamburger" id="ham" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu" role="dialog" aria-label="Navigation">
+  <button class="mob-close" id="mobClose" aria-label="Close menu">✕</button>
+  <a href="#history" class="mob-link">About</a>
+  <a href="#services" class="mob-link">Services</a>
+  <a href="#projects" class="mob-link">Projects</a>
+  <a href="#awards" class="mob-link">Awards</a>
+  <a href="#team" class="mob-link">Team</a>
+  <a href="#clients" class="mob-link">Clients</a>
+  <a href="#contact" class="mob-cta mob-link">Enquire Now</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hl">
+    <div class="h-ey"><div class="h-ey-bar"></div><span class="h-ey-txt">Est. 1997 · Shah Alam, Selangor</span></div>
+    <h1 class="h-title">Shaping<span class="it">Living</span><span class="gn">Landscapes</span></h1>
+    <div class="h-rule"></div>
+    <p class="h-desc">Award-winning landscape architecture consultancy delivering transformative environmental design across Malaysia for over 27 years.</p>
+    <div class="h-btns">
+      <a href="#projects" class="btn-o">View Our Work</a>
+      <a href="#history" class="btn-gh">Our Story</a>
+    </div>
+    <div class="h-scroll"><div class="h-scl"><div class="h-scf"></div></div><span class="h-sct">Scroll</span></div>
+  </div>
+  <div class="hr">
+    <img id="heroImg" src="https://landarc97.com/wp-content/uploads/2025/02/IMG_20220401_111000-scaled.jpg" alt="LandArc landscape project Malaysia">
+    <div class="h-stats">
+      <div class="h-stat"><div class="hst-n">27+</div><div class="hst-l">Years</div></div>
+      <div class="h-stat"><div class="hst-n">50+</div><div class="hst-l">Projects</div></div>
+      <div class="h-stat"><div class="hst-n">6+</div><div class="hst-l">Awards</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span class="si">Landscape Architecture</span><span class="sd"></span><span class="si">Environmental Planning</span><span class="sd"></span><span class="si">Sustainable Design</span><span class="sd"></span><span class="si">Public Realm</span><span class="sd"></span><span class="si">Ecological Conservation</span><span class="sd"></span><span class="si">ILAM Registered</span><span class="sd"></span><span class="si">Est. 1997</span><span class="sd"></span><span class="si">Shah Alam, Malaysia</span><span class="sd"></span>
+    <span class="si">Landscape Architecture</span><span class="sd"></span><span class="si">Environmental Planning</span><span class="sd"></span><span class="si">Sustainable Design</span><span class="sd"></span><span class="si">Public Realm</span><span class="sd"></span><span class="si">Ecological Conservation</span><span class="sd"></span><span class="si">ILAM Registered</span><span class="sd"></span><span class="si">Est. 1997</span><span class="sd"></span><span class="si">Shah Alam, Malaysia</span><span class="sd"></span>
+  </div>
+</div>
+
+<!-- ═══ HISTORY / ABOUT ═══ -->
+<section class="history" id="history">
+  <div class="hist-intro">
+    <div class="hist-img">
+      <img src="https://landarc97.com/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-06-at-8.20.45-AM.jpeg" alt="LandArc Studio team" loading="lazy">
+      <div class="hist-badge rv"><div class="hb-num">1997</div><div class="hb-txt">Year Founded</div></div>
+    </div>
+    <div class="hist-copy">
+      <div class="kicker rv">Our Story</div>
+      <h2 class="sec-t rv d1">Where Ecology<br><em>Meets Design</em></h2>
+      <p class="hist-body rv d2">Established in <strong>1997</strong> and headquartered in Shah Alam, LandArc Associates is one of Malaysia's most awarded landscape architecture consultancies — delivering transformative ecological design across residential, commercial, institutional, and public realm projects for over 27 years.</p>
+      <div class="about-pillars rv d3">
+        <div class="ap"><div class="ap-n">01</div><div class="ap-t">Sustainability</div><div class="ap-d">Ecological integrity in every decision.</div></div>
+        <div class="ap"><div class="ap-n">02</div><div class="ap-t">Client Partnership</div><div class="ap-d">Close liaison from brief to completion.</div></div>
+        <div class="ap"><div class="ap-n">03</div><div class="ap-t">Award-Winning</div><div class="ap-d">FIABCI Gold &amp; ILAM Honour recipients.</div></div>
+        <div class="ap"><div class="ap-n">04</div><div class="ap-t">Innovation</div><div class="ap-d">Bold ideas across all typologies.</div></div>
+      </div>
+      <!-- Compact milestone strip -->
+      <div class="hist-milestones rv d4">
+        <div class="hm"><div class="hm-yr">1997</div><div class="hm-t">Founded</div></div>
+        <div class="hm-sep"></div>
+        <div class="hm"><div class="hm-yr">2016</div><div class="hm-t">1st ILAM</div></div>
+        <div class="hm-sep"></div>
+        <div class="hm"><div class="hm-yr">2019</div><div class="hm-t">FIABCI Gold</div></div>
+        <div class="hm-sep"></div>
+        <div class="hm"><div class="hm-yr">2023</div><div class="hm-t">Double Award</div></div>
+        <div class="hm-sep"></div>
+        <div class="hm"><div class="hm-yr">50+</div><div class="hm-t">Projects</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services" id="services">
+  <div class="srv-hd">
+    <div><div class="kicker rv">What We Do</div><h2 class="sec-t rv d1">Our <em>Services</em></h2></div>
+    <p class="srv-intro rv d2">Comprehensive landscape consultancy from concept through construction and long-term ecological aftercare.</p>
+  </div>
+  <div class="srv-grid">
+    <div class="srv-card rv" data-n="I"><div class="srv-bar"></div><h3 class="srv-t">Residential Landscape</h3><p class="srv-d">Bespoke outdoor environments for condominiums, gated communities, and landed developments — creating spaces where residents flourish.</p><span class="srv-tag">Residential</span></div>
+    <div class="srv-card rv d1" data-n="II"><div class="srv-bar"></div><h3 class="srv-t">Institutional & Commercial</h3><p class="srv-d">Strategic green infrastructure for hospitals, hotels, corporate HQs, convention centres, and mixed-use developments.</p><span class="srv-tag">Commercial</span></div>
+    <div class="srv-card rv d2" data-n="III"><div class="srv-bar"></div><h3 class="srv-t">Public Parks & Recreation</h3><p class="srv-d">Wetlands, sports parks, central parks, and recreational corridors that serve communities for generations.</p><span class="srv-tag">Public Realm</span></div>
+    <div class="srv-card rv d3" data-n="IV"><div class="srv-bar"></div><h3 class="srv-t">Environmental Planning</h3><p class="srv-d">Ecological conservation, environmental impact studies, and sustainable masterplanning for sensitive landscapes.</p><span class="srv-tag">Environmental</span></div>
+    <div class="srv-card rv d4" data-n="V"><div class="srv-bar"></div><h3 class="srv-t">Infrastructure Landscaping</h3><p class="srv-d">Ecological integration for highways, transport corridors, and large-scale infrastructure projects.</p><span class="srv-tag">Infrastructure</span></div>
+    <div class="srv-card rv d5" data-n="VI"><div class="srv-bar"></div><h3 class="srv-t">Contract Administration</h3><p class="srv-d">On-site supervision and coordination ensuring every design intent is faithfully realised to the highest standard.</p><span class="srv-tag">Administration</span></div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section class="projects" id="projects">
+  <div class="proj-inner">
+    <div class="proj-hd">
+      <div><div class="kicker rv">Portfolio</div><h2 class="sec-t rv d1">Selected <em>Work</em></h2></div>
+      <div class="proj-controls">
+        <a href="https://landarc97.com/work-project/" target="_blank" class="all-link">All Projects</a>
+        <button class="car-btn" id="projPrev" aria-label="Previous">&#8592;</button>
+        <button class="car-btn" id="projNext" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+    <div class="proj-tabs rv" role="tablist">
+      <button class="ptab active" onclick="filterProj(event,'all')" role="tab">All</button>
+      <button class="ptab" onclick="filterProj(event,'residential')" role="tab">Residential</button>
+      <button class="ptab" onclick="filterProj(event,'commercial')" role="tab">Commercial</button>
+      <button class="ptab" onclick="filterProj(event,'park')" role="tab">Parks & Ecological</button>
+      <button class="ptab" onclick="filterProj(event,'hospitality')" role="tab">Hospitality</button>
+    </div>
+  </div>
+  <div class="car-vp">
+    <div class="pg" id="projTrack">
+      <div class="pi wide" data-cat="park"><img src="https://landarc97.com/wp-content/uploads/2025/02/IMG_20220422_110654-scaled.jpg" alt="Setia Alam Active Park" loading="lazy"><div class="pi-info"><div class="pi-cat">Public Park</div><div class="pi-name">Setia Alam Active Park</div><div class="pi-loc">Bandar Setia Alam, Selangor</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/04/Ken-Rimba-Shah-Alam-Selangor.jpg" alt="Ken Rimba" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Ken Rimba</div><div class="pi-loc">Shah Alam, Selangor</div></div></div>
+      <div class="pi" data-cat="park"><img src="https://landarc97.com/wp-content/uploads/2025/04/Wetland-Bandar-Setia-Alam-Selangor.png" alt="Central Park Wetland" loading="lazy"><div class="pi-info"><div class="pi-cat">Ecological</div><div class="pi-name">Central Park Wetland</div><div class="pi-loc">Bandar Setia Alam, Selangor</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/02/Sunway-Avila-Residence-Wangsa-Maju-Kuala-Lumpur-min-scaled.jpg" alt="Sunway Avila" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Sunway Avila Residence</div><div class="pi-loc">Wangsa Maju, KL</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/04/Sensory-Residence-@-Southville-City-Dengkil-Selangor-min-scaled.jpg" alt="Sensory Residence" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Sensory Residence @ Southville</div><div class="pi-loc">Dengkil, Selangor</div></div></div>
+      <div class="pi wide" data-cat="commercial"><img src="https://landarc97.com/wp-content/uploads/2025/04/Setia-EcoHill-Mall-Semenyih-Selangor-scaled.jpg" alt="Setia EcoHill Mall" loading="lazy"><div class="pi-info"><div class="pi-cat">Commercial</div><div class="pi-name">Setia EcoHill Mall</div><div class="pi-loc">Semenyih, Selangor</div></div></div>
+      <div class="pi" data-cat="commercial"><img src="https://landarc97.com/wp-content/uploads/2025/04/Office-Tower-Icity-Shah-Alam-Selangor-min-scaled.jpg" alt="I-City Office Tower" loading="lazy"><div class="pi-info"><div class="pi-cat">Commercial</div><div class="pi-name">I-City Office Tower</div><div class="pi-loc">Shah Alam, Selangor</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/04/Ferrenghi-Residence-2-Pulau-Pinang-min-scaled.jpg" alt="Ferrenghi Residence" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Ferrenghi Residence 2</div><div class="pi-loc">Pulau Pinang</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/04/ECO-MEADOWS-1.jpg" alt="Eco Meadows" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Eco Meadows</div><div class="pi-loc">Jawi, Pulau Pinang</div></div></div>
+      <div class="pi" data-cat="hospitality"><img src="https://landarc97.com/wp-content/uploads/2025/04/3-1-scaled.jpg" alt="Amari Spice Hotel" loading="lazy"><div class="pi-info"><div class="pi-cat">Hospitality</div><div class="pi-name">Amari Spice Hotel</div><div class="pi-loc">Bayan Lepas, Pulau Pinang</div></div></div>
+      <div class="pi wide" data-cat="park"><img src="https://landarc97.com/wp-content/uploads/2025/04/Picture35.jpg" alt="Active Park Zone 2" loading="lazy"><div class="pi-info"><div class="pi-cat">Public Park</div><div class="pi-name">Setia Alam Active Park Zone 2</div><div class="pi-loc">Bandar Setia Alam, Selangor</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/04/SETIA-REFLECTION2.jpg" alt="Setia Reflections" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Setia Reflections</div><div class="pi-loc">Pulau Pinang</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/04/IJM-Bayouri-Pulau-Pinang.jpg" alt="IJM Bayouri" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">IJM Bayouri</div><div class="pi-loc">Pulau Pinang</div></div></div>
+      <div class="pi" data-cat="park"><img src="https://landarc97.com/wp-content/uploads/2025/04/PERMAI-GARDEN1.jpg" alt="Permai Garden" loading="lazy"><div class="pi-info"><div class="pi-cat">Public Garden</div><div class="pi-name">Permai Garden</div><div class="pi-loc">Pulau Pinang</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/04/Setia-Greens-Pulau-Pinang.png" alt="Setia Greens" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Setia Greens</div><div class="pi-loc">Pulau Pinang</div></div></div>
+      <div class="pi" data-cat="hospitality"><img src="https://landarc97.com/wp-content/uploads/2025/05/DoubleTree-Icity-Shah-Alam-Selangor-scaled.jpg" alt="DoubleTree iCity" loading="lazy"><div class="pi-info"><div class="pi-cat">Hospitality</div><div class="pi-name">DoubleTree by Hilton iCity</div><div class="pi-loc">Shah Alam, Selangor</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/05/Residensi-22-Mont-Kiara-Kuala-Lumpur.png" alt="Residensi 22" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Residensi 22 Mont Kiara</div><div class="pi-loc">Kuala Lumpur</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/05/Brook-Residences-Pulau-Pinang.jpg" alt="Brook Residences" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Brook Residences</div><div class="pi-loc">Pulau Pinang</div></div></div>
+      <div class="pi wide" data-cat="commercial"><img src="https://landarc97.com/wp-content/uploads/2025/04/Picture6.png" alt="KL Sports City" loading="lazy"><div class="pi-info"><div class="pi-cat">Sports & Recreation</div><div class="pi-name">KL Sports City</div><div class="pi-loc">Bukit Jalil, Kuala Lumpur</div></div></div>
+      <div class="pi" data-cat="residential"><img src="https://landarc97.com/wp-content/uploads/2025/04/Sunway-Velocity-2-Cheras-Kuala-Lumpur.jpg" alt="Sunway Velocity 2" loading="lazy"><div class="pi-info"><div class="pi-cat">Residential</div><div class="pi-name">Sunway Velocity 2</div><div class="pi-loc">Cheras, KL</div></div></div>
+      <div class="pi" data-cat="park"><img src="https://landarc97.com/wp-content/uploads/2025/05/Setia-City-Park-Setia-Alam-Selangor-scaled.png" alt="Setia City Park" loading="lazy"><div class="pi-info"><div class="pi-cat">Public Park</div><div class="pi-name">Setia City Park</div><div class="pi-loc">Setia Alam, Selangor</div></div></div>
+    </div>
+  </div>
+  <div class="car-progress" style="margin-top:16px;"><div class="car-progress-fill" id="projFill"></div></div>
+</section>
+
+<!-- ═══ AWARDS ═══ -->
+<section class="awards" id="awards">
+  <div class="aw-hero">
+    <div class="aw-hero-inner">
+      <div class="rv">
+        <div class="aw-hero-kicker">Recognition</div>
+        <h2 class="aw-hero-title">Industry<br>Awards &<br>Honours</h2>
+        <p class="aw-hero-sub">Recognised by Malaysia's most prestigious design bodies — FIABCI and ILAM — for sustained excellence in landscape architecture, ecological design, and environmental planning.</p>
+      </div>
+      <div class="aw-stats rv d2">
+        <div class="aw-stat"><div class="aw-stat-n">5</div><div class="aw-stat-l">Total Awards</div></div>
+        <div class="aw-stat"><div class="aw-stat-n">2</div><div class="aw-stat-l">FIABCI Gold</div></div>
+        <div class="aw-stat"><div class="aw-stat-n">3</div><div class="aw-stat-l">ILAM Honours</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="aw-grid">
+    <div class="aw-card gold rv">
+      <svg class="aw-trophy" width="36" height="36" viewBox="0 0 40 40" fill="none"><path d="M20 4L22.5 12H31L24.2 17.5L26.7 25.5L20 20.5L13.3 25.5L15.8 17.5L9 12H17.5L20 4Z" fill="#F0B429" opacity=".9"/><rect x="16" y="28" width="8" height="4" rx="1" fill="#F0B429" opacity=".5"/><rect x="12" y="32" width="16" height="3" rx="1" fill="#F0B429" opacity=".4"/></svg>
+      <div class="aw-badge gold">Gold Award</div>
+      <div class="aw-org">FIABCI Malaysia</div>
+      <div class="aw-yr">2023</div>
+      <div class="aw-proj">Setia V-Residence</div>
+      <div class="aw-detail">High Rise Category · SP Setia Group</div>
+    </div>
+    <div class="aw-card honour rv d1">
+      <svg class="aw-trophy" width="36" height="36" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="8" stroke="#E86A1A" stroke-width="2" fill="none"/><path d="M12 14 C8 14 6 18 6 22 L12 22 L14 28 L20 26 L26 28 L28 22 L34 22 C34 18 32 14 28 14" stroke="#E86A1A" stroke-width="1.5" fill="none"/><rect x="16" y="28" width="8" height="3" rx="1" fill="#E86A1A" opacity=".5"/><rect x="13" y="31" width="14" height="3" rx="1" fill="#E86A1A" opacity=".4"/></svg>
+      <div class="aw-badge honour">Honour Award</div>
+      <div class="aw-org">ILAM Malaysia</div>
+      <div class="aw-yr">2023</div>
+      <div class="aw-proj">Ecohill Walk</div>
+      <div class="aw-detail">Developer Category · SP Setia Group</div>
+    </div>
+    <div class="aw-card gold rv d2">
+      <svg class="aw-trophy" width="36" height="36" viewBox="0 0 40 40" fill="none"><path d="M20 4L22.5 12H31L24.2 17.5L26.7 25.5L20 20.5L13.3 25.5L15.8 17.5L9 12H17.5L20 4Z" fill="#F0B429" opacity=".9"/><rect x="16" y="28" width="8" height="4" rx="1" fill="#F0B429" opacity=".5"/><rect x="12" y="32" width="16" height="3" rx="1" fill="#F0B429" opacity=".4"/></svg>
+      <div class="aw-badge gold">Gold Award</div>
+      <div class="aw-org">FIABCI Malaysia</div>
+      <div class="aw-yr">2019</div>
+      <div class="aw-proj">SPICe Convention Centre</div>
+      <div class="aw-detail">Propose Built Category · Eco Meridian</div>
+    </div>
+    <div class="aw-card honour rv d3">
+      <svg class="aw-trophy" width="36" height="36" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="8" stroke="#E86A1A" stroke-width="2" fill="none"/><path d="M12 14 C8 14 6 18 6 22 L12 22 L14 28 L20 26 L26 28 L28 22 L34 22 C34 18 32 14 28 14" stroke="#E86A1A" stroke-width="1.5" fill="none"/><rect x="16" y="28" width="8" height="3" rx="1" fill="#E86A1A" opacity=".5"/><rect x="13" y="31" width="14" height="3" rx="1" fill="#E86A1A" opacity=".4"/></svg>
+      <div class="aw-badge honour">Honour Award</div>
+      <div class="aw-org">ILAM Malaysia</div>
+      <div class="aw-yr">2017</div>
+      <div class="aw-proj">SPICe Convention Centre</div>
+      <div class="aw-detail">Developer Category · Eco Meridian</div>
+    </div>
+    <div class="aw-card honour rv d4">
+      <svg class="aw-trophy" width="36" height="36" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="8" stroke="#E86A1A" stroke-width="2" fill="none"/><path d="M12 14 C8 14 6 18 6 22 L12 22 L14 28 L20 26 L26 28 L28 22 L34 22 C34 18 32 14 28 14" stroke="#E86A1A" stroke-width="1.5" fill="none"/><rect x="16" y="28" width="8" height="3" rx="1" fill="#E86A1A" opacity=".5"/><rect x="13" y="31" width="14" height="3" rx="1" fill="#E86A1A" opacity=".4"/></svg>
+      <div class="aw-badge honour">Honour Award</div>
+      <div class="aw-org">ILAM Malaysia</div>
+      <div class="aw-yr">2016</div>
+      <div class="aw-proj">Central Park — Wetland</div>
+      <div class="aw-detail">Developer Category · Bandar Setia Alam</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLIENTS & DEVELOPERS ═══ -->
+<section class="clients" id="clients">
+  <div class="clients-hd">
+    <div class="kicker rv">Trusted By</div>
+    <h2 class="cl-title rv d1">Our Clients &amp; <em>Partners</em></h2>
+    <p class="cl-sub rv d2">Over 27 years, LandArc Associates has built trusted long-term partnerships with Malaysia's most prominent property developers, government bodies, and institutional clients.</p>
+  </div>
+
+  <!-- Property Developers carousel -->
+  <div class="cl-cat-row rv">
+    <div class="cl-cat-label">
+      <span class="cl-cat-bar"></span>
+      <span class="cl-cat-title">Property Developers</span>
+    </div>
+    <div class="cl-ctrl">
+      <button class="tcar-btn" onclick="scrollClients('dev',-1)">&#8592;</button>
+      <button class="tcar-btn" onclick="scrollClients('dev',1)">&#8594;</button>
+    </div>
+  </div>
+  <div class="cl-car-wrap rv d1">
+    <div class="cl-track" id="devTrack">
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/03/sp_setia_logo.webp" alt="SP Setia Group" loading="lazy"><span class="cl-name">SP Setia Group</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/03/EcoWorld_Logo.png" alt="EcoWorld Development" loading="lazy"><span class="cl-name">EcoWorld Development</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/04/LOGO-SUNWAY.png" alt="Sunway Group" loading="lazy"><span class="cl-name">Sunway Group</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/02/IOI-main-logo.jpg" alt="IOI Properties" loading="lazy"><span class="cl-name">IOI Properties</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/02/ijm-land-logo.jpg" alt="IJM Land" loading="lazy"><span class="cl-name">IJM Land</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/04/LOGO-MAHSING.png" alt="Mah Sing Group" loading="lazy"><span class="cl-name">Mah Sing Group</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/03/Skyworld_logo.jpg" alt="SkyWorld Development" loading="lazy"><span class="cl-name">SkyWorld Development</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/02/titijaya-logo.png" alt="Titijaya Land" loading="lazy"><span class="cl-name">Titijaya Land</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/02/Majestic-Gen-logo-scaled-1.jpg" alt="Majestic Gen" loading="lazy"><span class="cl-name">Majestic Gen</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/04/LOGO-MMC.png" alt="MMC Corporation" loading="lazy"><span class="cl-name">MMC Corporation</span></div>
+    </div>
+  </div>
+
+  <!-- Institutional & Government carousel -->
+  <div class="cl-cat-row rv">
+    <div class="cl-cat-label">
+      <span class="cl-cat-bar"></span>
+      <span class="cl-cat-title">Institutional &amp; Government</span>
+    </div>
+    <div class="cl-ctrl">
+      <button class="tcar-btn" onclick="scrollClients('inst',-1)">&#8592;</button>
+      <button class="tcar-btn" onclick="scrollClients('inst',1)">&#8594;</button>
+    </div>
+  </div>
+  <div class="cl-car-wrap rv d1" style="padding-bottom:clamp(0px,0vw,0px);">
+    <div class="cl-track" id="instTrack">
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/04/LOGO-JKR.png" alt="JKR Malaysia" loading="lazy"><span class="cl-name">JKR Malaysia</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/02/LOGO-MAJLIS-2-FOR-WEB.png" alt="MBSA Shah Alam" loading="lazy"><span class="cl-name">MBSA Shah Alam</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/02/Shah_Alam_Emblem.svg.png" alt="Majlis Bandaraya Shah Alam" loading="lazy"><span class="cl-name">Majlis Bandaraya Shah Alam</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/04/LOGO-NCER.png" alt="NCER" loading="lazy"><span class="cl-name">Northern Corridor Economic Region</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/04/LOGO-AURELIUS-HOSPITAL.png" alt="Aurelius Hospital" loading="lazy"><span class="cl-name">Aurelius Hospital</span></div>
+      <div class="cl-logo"><img src="https://landarc97.com/wp-content/uploads/2025/03/columbia-asia_logo.jpg" alt="Columbia Asia Healthcare" loading="lazy"><span class="cl-name">Columbia Asia Healthcare</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ═══ -->
+<section class="team" id="team">
+  <div class="team-inner">
+    <div class="team-hd">
+      <div class="kicker rv">The People Behind the Work</div>
+      <h2 class="sec-t rv d1">Our <em>Team</em></h2>
+    </div>
+  </div>
+
+  <!-- Directors -->
+  <div class="team-inner">
+    <div class="team-sec-hd rv">
+      <span style="font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,22px);font-weight:700;color:var(--wh);">Executive Directors</span>
+      <div class="team-ctrl">
+        <button class="tcar-btn" onclick="scrollDir(-1)">&#8592;</button>
+        <button class="tcar-btn" onclick="scrollDir(1)">&#8594;</button>
+      </div>
+    </div>
+  </div>
+  <div class="directors-wrap rv d1">
+    <div class="directors" id="dirTrack">
+      <div class="dir-card">
+        <div class="dir-img"><img src="https://landarc97.com/wp-content/uploads/2025/07/LEE-KWAI-PHENG-DIRECTOR-235x300.jpg" alt="LAr. Lee Kwai Pheng" loading="lazy"></div>
+        <div class="dir-copy"><div class="dir-role">Executive Director</div><div class="dir-name">LAr. Lee Kwai Pheng</div><div class="dir-cred">MSc &amp; BSc Landscape Architecture, UPM</div><p class="dir-bio">With over 25 years in the field, Lee Kwai Pheng has been pivotal in steering LandArc's strategic growth since 1998, delivering innovative and sustainable landscape solutions across Malaysia.</p></div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-img"><img src="https://landarc97.com/wp-content/uploads/2025/06/Gambar-En-Akram-198x300.jpg" alt="Mohd Akram Bin Othman" loading="lazy"></div>
+        <div class="dir-copy"><div class="dir-role">Executive Director</div><div class="dir-name">Mohd Akram Bin Othman</div><div class="dir-cred">Master's in Architecture, University of Michigan</div><p class="dir-bio">With over 30 years blending architecture and landscape design, Akram steers LandArc's creative vision — delivering projects that are functional, visually striking, and of the highest quality.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Senior Landscape Architects -->
+  <div class="team-inner staff-section-gap">
+    <div class="team-sec-hd rv">
+      <span style="font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,22px);font-weight:700;color:var(--wh);">Senior Landscape Architects</span>
+      <div class="team-ctrl">
+        <button class="tcar-btn" onclick="scrollStaff('senior',-1)">&#8592;</button>
+        <button class="tcar-btn" onclick="scrollStaff('senior',1)">&#8594;</button>
+      </div>
+    </div>
+  </div>
+  <div class="staff-car-wrap rv d1">
+    <div class="staff-track" id="seniorTrack">
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/MAZLEEN-BIN-AHMAD-MAHAYUDDIN-SENIOR-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Mazleen" loading="lazy"></div><div class="staff-info"><div class="staff-name">Mazleen Bin Ahmad Mahayuddin</div><div class="staff-role">Senior Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/SAHIR-BIN-SAMAT-SENIOR-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Sahir" loading="lazy"></div><div class="staff-info"><div class="staff-name">Sahir Bin Samat</div><div class="staff-role">Senior Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/SYAFIQ-AFANDI-BIN-ABD-RAHMAN-SENIOR-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Syafiq" loading="lazy"></div><div class="staff-info"><div class="staff-name">Syafiq Afandi Bin Abd Rahman</div><div class="staff-role">Senior Landscape Architect</div></div></div>
+    </div>
+  </div>
+
+  <!-- Landscape Architects -->
+  <div class="team-inner staff-section-gap">
+    <div class="team-sec-hd rv">
+      <span style="font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,22px);font-weight:700;color:var(--wh);">Landscape Architects</span>
+      <div class="team-ctrl">
+        <button class="tcar-btn" onclick="scrollStaff('arch',-1)">&#8592;</button>
+        <button class="tcar-btn" onclick="scrollStaff('arch',1)">&#8594;</button>
+      </div>
+    </div>
+  </div>
+  <div class="staff-car-wrap rv d1">
+    <div class="staff-track" id="archTrack">
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/AZWAN-BIN-LOP-ZAHIRI-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Azwan" loading="lazy"></div><div class="staff-info"><div class="staff-name">Azwan Bin Lop Zahiri</div><div class="staff-role">Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/MUHAMMAD-AFIQ-BIN-ABDUL-RASHID-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Afiq" loading="lazy"></div><div class="staff-info"><div class="staff-name">Muhammad Afiq Bin Abdul Rashid</div><div class="staff-role">Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/MUHAMAD-TAQIY-BIN-ASSHAARI-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Taqiy" loading="lazy"></div><div class="staff-info"><div class="staff-name">Muhamad Taqiy Bin Asshaari</div><div class="staff-role">Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/NUR-FARZANA-BINTI-ANUAR-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Farzana" loading="lazy"></div><div class="staff-info"><div class="staff-name">Nur Farzana Binti Anuar</div><div class="staff-role">Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/NUR-AQILAH-BINTI-BADRUL-HISHAM-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Aqilah" loading="lazy"></div><div class="staff-info"><div class="staff-name">Nur Aqilah Binti Badrul Hisham</div><div class="staff-role">Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/NOR-YUSRA-IZZATI-BINTI-AHMAD-SHAFIEI-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Yusra" loading="lazy"></div><div class="staff-info"><div class="staff-name">Nor Yusra Izzati Binti Ahmad Shafiei</div><div class="staff-role">Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/NAEMATUL-MUNIRAH-BINTI-MOHD-ASRI-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Naematul" loading="lazy"></div><div class="staff-info"><div class="staff-name">Naematul Munirah Binti Mohd Asri</div><div class="staff-role">Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/MOHAMAD-FAHMI-BIN-JAMAL-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Fahmi" loading="lazy"></div><div class="staff-info"><div class="staff-name">Mohamad Fahmi Bin Jamal</div><div class="staff-role">Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/BULQHAIRI-SYAHKIRIN-BIN-BULKINI-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Bulqhairi" loading="lazy"></div><div class="staff-info"><div class="staff-name">Bulqhairi Syahkirin Bin Bulkini</div><div class="staff-role">Landscape Architect</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/MUHAMMAD-ARIF-RAIHAN-BIN-ASFADZAL-LANDSCAPE-ARCHITECT-150x150.jpg" alt="Arif" loading="lazy"></div><div class="staff-info"><div class="staff-name">Muhammad Arif Raihan Bin Asfadzal</div><div class="staff-role">Landscape Architect</div></div></div>
+    </div>
+  </div>
+
+  <!-- Design & Support Team -->
+  <div class="team-inner staff-section-gap">
+    <div class="team-sec-hd rv">
+      <span style="font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,22px);font-weight:700;color:var(--wh);">Design &amp; Support Team</span>
+      <div class="team-ctrl">
+        <button class="tcar-btn" onclick="scrollStaff('support',-1)">&#8592;</button>
+        <button class="tcar-btn" onclick="scrollStaff('support',1)">&#8594;</button>
+      </div>
+    </div>
+  </div>
+  <div class="staff-car-wrap rv d1" style="padding-bottom:clamp(48px,7vw,80px);">
+    <div class="staff-track" id="supportTrack">
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/MOHAMMAD-SABRI-ELMY-BIN-ABD-BASSET-3D-DESIGNER-150x150.jpg" alt="Sabri" loading="lazy"></div><div class="staff-info"><div class="staff-name">Mohammad Sabri Elmy Bin Abd Basset</div><div class="staff-role">3D Designer</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/ZULHERY-FAHMY-BIN-MUHAMAD-NAWAWAI-DRAUGHTER-150x150.jpg" alt="Zulhery" loading="lazy"></div><div class="staff-info"><div class="staff-name">Zulhery Fahmy Bin Muhamad Nawawai</div><div class="staff-role">Draughtsman</div></div></div>
+      <div class="staff-card"><div class="staff-img"><img src="https://landarc97.com/wp-content/uploads/2025/04/MUHAMMAD-SHAFEEQ-BIN-MOHD-NAWI-QUANTITY-SURVEYOR-150x150.jpg" alt="Shafeeq" loading="lazy"></div><div class="staff-info"><div class="staff-name">Muhammad Shafeeq Bin Mohd Nawi</div><div class="staff-role">Quantity Surveyor</div></div></div>
+      <div class="staff-card"><div class="staff-img"><div class="staff-init">RN</div></div><div class="staff-info"><div class="staff-name">Rozilawati Nor</div><div class="staff-role">HR / Finance</div></div></div>
+      <div class="staff-card"><div class="staff-img"><div class="staff-init">HR</div></div><div class="staff-info"><div class="staff-name">Hur Rafhanah Riza</div><div class="staff-role">PA / Admin</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact" id="contact">
+  <div class="contact-l">
+    <div class="kicker rv">Start a Project</div>
+    <h2 class="sec-t rv d1">Let's Build<br><em>Something Lasting</em></h2>
+    <p class="c-blurb rv d2">Whether you're a developer, government body, or institution — LandArc Associates brings 27 years of expertise to every brief.</p>
+    <div class="cd rv d3">
+      <div class="cd-r"><span class="cd-l">Office</span><span class="cd-v">Shah Alam, Selangor · Malaysia</span></div>
+      <div class="cd-r"><span class="cd-l">Email</span><span class="cd-v">info@landarc97.com</span></div>
+      <div class="cd-r"><span class="cd-l">Web</span><span class="cd-v">landarc97.com</span></div>
+      <div class="cd-r"><span class="cd-l">Facebook</span><span class="cd-v">landarc.associates.sdn.bhd</span></div>
+      <div class="cd-r"><span class="cd-l">Reg.</span><span class="cd-v">No. 438059-A · ILAM Registered</span></div>
+    </div>
+  </div>
+  <div class="contact-r">
+    <h3 class="cf-t">Send an Enquiry</h3>
+    <div class="cf2">
+      <div class="cfg"><label class="cfl">First Name</label><input type="text" class="cfi" placeholder="Ahmad" autocomplete="given-name"></div>
+      <div class="cfg"><label class="cfl">Last Name</label><input type="text" class="cfi" placeholder="Razif" autocomplete="family-name"></div>
+    </div>
+    <div class="cfg"><label class="cfl">Organisation</label><input type="text" class="cfi" placeholder="Developer / Company" autocomplete="organization"></div>
+    <div class="cfg"><label class="cfl">Email</label><input type="email" class="cfi" placeholder="you@company.com" autocomplete="email"></div>
+    <div class="cfg">
+      <label class="cfl">Project Type</label>
+      <select class="cfs"><option value="" disabled selected>Select type…</option><option>Residential Development</option><option>Commercial / Mixed Use</option><option>Institutional / Government</option><option>Public Park / Recreation</option><option>Infrastructure Landscaping</option><option>Environmental Planning</option><option>Other</option></select>
+    </div>
+    <div class="cfg"><label class="cfl">Message</label><textarea class="cft" placeholder="Tell us about your project…"></textarea></div>
+    <button class="cfb" id="cfBtn">Send Enquiry →</button>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="ft">
+    <div>
+      <img src="https://landarc97.com/wp-content/uploads/2024/09/Heading-3.png" alt="LandArc Associates" class="ft-logo">
+      <p class="ft-tag">Environmental planning and landscape architecture consultancy. Crafting enduring spaces since 1997.</p>
+      <div class="ft-socs">
+        <a href="https://www.facebook.com/landarc.associates.sdn.bhd/" target="_blank" rel="noopener" class="ft-soc" aria-label="Facebook">FB</a>
+        <a href="https://www.instagram.com/landarc.associates/" target="_blank" rel="noopener" class="ft-soc" aria-label="Instagram">IG</a>
+        <a href="https://landarc97.com" target="_blank" rel="noopener" class="ft-soc" aria-label="Website">WEB</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-ch">Services</div>
+      <ul class="ft-ls"><li><a href="#services">Residential</a></li><li><a href="#services">Commercial</a></li><li><a href="#services">Public Parks</a></li><li><a href="#services">Environmental</a></li><li><a href="#services">Infrastructure</a></li></ul>
+    </div>
+    <div>
+      <div class="ft-ch">Company</div>
+      <ul class="ft-ls"><li><a href="#history">Our Story</a></li><li><a href="#team">Directors</a></li><li><a href="#team">Our Team</a></li><li><a href="#awards">Awards</a></li><li><a href="#projects">Projects</a></li></ul>
+    </div>
+    <div>
+      <div class="ft-ch">Connect</div>
+      <ul class="ft-ls"><li><a href="#contact">Get in Touch</a></li><li><a href="mailto:info@landarc97.com">info@landarc97.com</a></li><li><a href="https://landarc97.com" target="_blank" rel="noopener">landarc97.com</a></li><li><a href="#clients">Our Clients</a></li></ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span class="ft-c">© 2025 LandArc Associates Sdn. Bhd. All rights reserved.</span>
+    <span class="ft-r">No. 438059-A · ILAM Registered · Shah Alam, Selangor</span>
+  </div>
+</footer>
+
+<script>
+/* ── Custom cursor ── */
+const dot=document.getElementById('dot'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0,_rafCursor;
+if(window.matchMedia('(hover:hover)').matches){
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function a(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';_rafCursor=requestAnimationFrame(a);})();
+  document.querySelectorAll('a,button,.pi,.srv-card,.aw-card,.cl-logo,.staff-card,.dir-card,.step').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{dot.style.transform='translate(-50%,-50%) scale(2.5)';ring.style.width='52px';ring.style.height='52px';});
+    el.addEventListener('mouseleave',()=>{dot.style.transform='translate(-50%,-50%) scale(1)';ring.style.width='34px';ring.style.height='34px';});
+  });
+}
+
+/* ── Nav ── */
+const nav=document.getElementById('nav');
+const onScroll=()=>nav.classList.toggle('s',window.scrollY>40);
+window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+/* ── Hero ── */
+const hi=document.getElementById('heroImg');
+// no parallax — keeps image stable
+
+/* ── Mobile menu ── */
+const ham=document.getElementById('ham'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
+const openMenu=()=>{mobMenu.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';};
+const closeMenu=()=>{mobMenu.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';};
+ham.addEventListener('click',openMenu); mobClose.addEventListener('click',closeMenu);
+document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',closeMenu));
+
+/* ── Scroll reveal ── */
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ════════════════════════════════════════
+   DRAG CAROUSEL FACTORY
+   Pointer/touch drag + momentum + arrow buttons
+════════════════════════════════════════ */
+function makeCarousel(trackEl, fillEl){
+  if(!trackEl) return null;
+  let startX=0, startScroll=0, isDragging=false, hasMoved=false;
+  let vel=0, lastX=0, lastT=0, raf=null;
+
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const maxScroll=()=>Math.max(0, trackEl.scrollWidth - trackEl.parentElement.clientWidth + 48);
+  const getCurScroll=()=>-(parseFloat((trackEl.style.transform||'').replace('translateX(',''))||0);
+  const setScroll=s=>{
+    const v=clamp(s,0,maxScroll());
+    trackEl.style.transform=`translateX(${-v}px)`;
+    if(fillEl){ const pct=maxScroll()>0?(v/maxScroll()*90)|0:0; fillEl.style.width=`${10+pct}%`; }
+  };
+
+  const down=e=>{
+    if(raf){cancelAnimationFrame(raf);raf=null;}
+    const x=e.touches?e.touches[0].clientX:e.clientX;
+    startX=x; startScroll=getCurScroll(); isDragging=true; hasMoved=false;
+    lastX=x; lastT=Date.now(); vel=0;
+    trackEl.classList.add('is-dragging');
+    if(!e.touches) e.preventDefault();
+  };
+  const move=e=>{
+    if(!isDragging) return;
+    const x=e.touches?e.touches[0].clientX:e.clientX;
+    const dx=x-startX;
+    if(Math.abs(dx)>5) hasMoved=true;
+    const now=Date.now(), dt=now-lastT||1;
+    vel=(x-lastX)/dt; lastX=x; lastT=now;
+    setScroll(startScroll-dx);
+    if(e.touches && Math.abs(dx)>8) e.preventDefault();
+  };
+  const up=()=>{
+    if(!isDragging) return;
+    isDragging=false; trackEl.classList.remove('is-dragging');
+    let v=-vel*300;
+    const momentum=()=>{
+      v*=.86;
+      if(Math.abs(v)<.4){raf=null;return;}
+      setScroll(getCurScroll()+v);
+      raf=requestAnimationFrame(momentum);
+    };
+    raf=requestAnimationFrame(momentum);
+    if(hasMoved){
+      const absorb=ev=>{ev.stopPropagation();ev.preventDefault();trackEl.removeEventListener('click',absorb,true);};
+      trackEl.addEventListener('click',absorb,{capture:true,once:true});
+    }
+  };
+
+  trackEl.addEventListener('mousedown',down,{passive:false});
+  trackEl.addEventListener('touchstart',down,{passive:true});
+  window.addEventListener('mousemove',move,{passive:false});
+  window.addEventListener('touchmove',move,{passive:false});
+  window.addEventListener('mouseup',up); window.addEventListener('touchend',up);
+
+  /* smooth scroll by amount */
+  const scrollBy=px=>{
+    if(raf){cancelAnimationFrame(raf);raf=null;}
+    const from=getCurScroll(), to=clamp(from+px,0,maxScroll());
+    const dur=420, t0=performance.now();
+    const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+    const step=now=>{
+      const p=Math.min((now-t0)/dur,1);
+      setScroll(from+(to-from)*ease(p));
+      if(p<1) raf=requestAnimationFrame(step); else raf=null;
+    };
+    raf=requestAnimationFrame(step);
+  };
+  return {scrollBy};
+}
+
+/* ── Init carousels ── */
+const projCar=makeCarousel(document.getElementById('projTrack'),document.getElementById('projFill'));
+document.getElementById('projPrev')?.addEventListener('click',()=>projCar?.scrollBy(-400));
+document.getElementById('projNext')?.addEventListener('click',()=>projCar?.scrollBy(400));
+
+const dirCar=makeCarousel(document.getElementById('dirTrack'),null);
+function scrollDir(dir){ dirCar?.scrollBy(dir*400); }
+
+const staffCars={
+  senior:makeCarousel(document.getElementById('seniorTrack'),null),
+  arch:  makeCarousel(document.getElementById('archTrack'),null),
+  support:makeCarousel(document.getElementById('supportTrack'),null)
+};
+function scrollStaff(id,dir){ staffCars[id]?.scrollBy(dir*220); }
+
+const clientCars={
+  dev: makeCarousel(document.getElementById('devTrack'),null),
+  inst:makeCarousel(document.getElementById('instTrack'),null)
+};
+function scrollClients(id,dir){ clientCars[id]?.scrollBy(dir*220); }
+
+/* ── Project filter ── */
+function filterProj(e,cat){
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  e.target.classList.add('active');
+  document.querySelectorAll('#projTrack .pi').forEach(p=>{p.style.display=(cat==='all'||p.dataset.cat===cat)?'':'none';});
+  const pt=document.getElementById('projTrack');
+  if(pt){pt.style.transform='translateX(0)';const pf=document.getElementById('projFill');if(pf)pf.style.width='10%';}
+}
+
+/* ── Lazy image fade-in ── */
+document.querySelectorAll('img[loading="lazy"]').forEach(img=>{
+  if(img.complete){img.classList.add('loaded');}
+  else{img.addEventListener('load',()=>img.classList.add('loaded'),{once:true});}
+});
+
+/* ── Contact ── */
+document.getElementById('cfBtn').addEventListener('click',function(){
+  this.textContent='Message Sent ✓';this.style.background='var(--gm)';
+  setTimeout(()=>{this.textContent='Send Enquiry →';this.style.background='';},3500);
+});
+
+/* ════════════════════════════════════════
+   PROJECT SHOWCASE
+════════════════════════════════════════ */
+const PROJECTS = [
+  {
+    id:'sunway-avila',
+    name:'Sunway Avila Residence',
+    location:'Wangsa Maju, Kuala Lumpur',
+    category:'Residential',
+    client:'Sunway Group',
+    type:'High-Rise Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Sunway Avila is an urban high-rise residential development in Wangsa Maju, Kuala Lumpur. LandArc designed a resort-style podium landscape complete with a pool deck, lush tropical planting, shaded leisure pavilions and connectivity gardens — delivering an elevated living environment for city residents.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/02/Sunway-Avila-Residence-Wangsa-Maju-Kuala-Lumpur-min-scaled.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Sunway-Avila-Residence-Wangsa-Maju-Kuala-Lumpur-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Sunway-Avila-Residence-Wangsa-Maju-Kuala-Lumpur-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'sunway-velocity',
+    name:'Sunway Velocity 2',
+    location:'Cheras, Kuala Lumpur',
+    category:'Residential',
+    client:'Sunway Group',
+    type:'Mixed-Use Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Part of the vibrant Sunway Velocity township in Cheras, this residential component required LandArc to design a cohesive landscape environment that complements the surrounding mixed-use retail and transit hub. The design features garden terraces, water elements and tropical planting that create a green sanctuary within the bustling urban context.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/Sunway-Velocity-2-Cheras-Kuala-Lumpur.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Sunway-Velocity-2-Cheras-Kuala-Lumpur-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Sunway-Velocity-2-Cheras-Kuala-Lumpur-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'wetland',
+    name:'Central Park — Wetland',
+    location:'Bandar Setia Alam, Selangor',
+    category:'Ecological',
+    client:'SP Setia Group',
+    type:'Ecological Conservation',
+    status:'Completed',
+    award:'ILAM Honour 2016',
+    desc:'This award-winning ecological wetland was a flagship project in LandArc\'s environmental design portfolio. Designed as the green heart of the Bandar Setia Alam township, it integrates a naturalised wetland ecosystem with public recreational paths, boardwalks, and extensive native planting. The Central Park Wetland won the ILAM Honour Award in 2016 for excellence in landscape design.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/Wetland-Bandar-Setia-Alam-Selangor.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Wetland-Bandar-Setia-Alam-Selangor-1-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Wetland-Bandar-Setia-Alam-Selangor-2-1-scaled.png'
+    ]
+  },
+  {
+    id:'icty-office',
+    name:'I-City Office Tower',
+    location:'Shah Alam, Selangor',
+    category:'Commercial',
+    client:'i-City Properties',
+    type:'Commercial / Corporate',
+    status:'Completed',
+    award:'—',
+    desc:'The I-City Office Tower landscape in Shah Alam called for a sophisticated urban landscape strategy to complement this landmark corporate development within one of Malaysia\'s most innovative technology precincts. LandArc\'s design integrates arrival plazas, ground-level green networks and lush softscaping that present an inviting and professional corporate environment.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/Office-Tower-Icity-Shah-Alam-Selangor-min-scaled.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Office-Tower-Icity-Shah-Alam-Selangor-1-scaled.png'
+    ]
+  },
+  {
+    id:'ken-rimba',
+    name:'Ken Rimba',
+    location:'Shah Alam, Selangor',
+    category:'Residential',
+    client:'Ken Holdings Berhad',
+    type:'Gated Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Ken Rimba is a premium landed and high-rise residential enclave in Shah Alam. LandArc crafted a lush tropical landscape environment with resort-style amenity decks, feature pools, and a rich planting palette that creates a serene sanctuary for residents within the bustling city context.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/Ken-Rimba-Shah-Alam-Selangor.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Ken-Rimba-Shah-Alam-Selangor-1-scaled.png'
+    ]
+  },
+  {
+    id:'kl-sports',
+    name:'KL Sports City',
+    location:'Bukit Jalil, Kuala Lumpur',
+    category:'Sports & Recreation',
+    client:'MMC Corporation / Government',
+    type:'Sports & Public Realm',
+    status:'Completed',
+    award:'—',
+    desc:'KL Sports City at Bukit Jalil is Malaysia\'s premier national sports precinct hosting world-class stadium facilities. LandArc was entrusted with the landscape master planning and implementation — creating generous public realm spaces, shaded plazas, sports-adjacent green corridors and spectator landscaping that serve millions of visitors at major international events.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/Picture6.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/KL-Sports-City-Bukit-Jalil-Kuala-Lumpur-1-scaled.png'
+    ]
+  },
+  {
+    id:'permai',
+    name:'Permai Garden',
+    location:'Pulau Pinang',
+    category:'Public Park',
+    client:'State Government / Local Authority',
+    type:'Public Garden',
+    status:'Completed',
+    award:'—',
+    desc:'Permai Garden in Penang is a public horticultural garden designed to provide the community with a serene green retreat in an urban setting. LandArc\'s design incorporates structured garden rooms, specimen tree planting, shaded walk areas and feature water elements — creating a beloved public landscape destination for Penang residents.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/PERMAI-GARDEN1.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Permai-Garden-Pulau-Pinang-2-1-scaled.png'
+    ]
+  },
+  {
+    id:'sensory',
+    name:'Sensory Residence @ Southville City',
+    location:'Dengkil, Selangor',
+    category:'Residential',
+    client:'Mah Sing Group',
+    type:'Township Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Sensory Residence is part of the large-scale Southville City township in Dengkil developed by Mah Sing. The landscape design by LandArc is centred around a sensory experience — incorporating textured surfaces, aromatic planting, water sounds and curated spatial sequences to create a landscape that engages all five senses.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/Sensory-Residence-@-Southville-City-Dengkil-Selangor-min-scaled.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Sensory-Residence-@-Southville-City-Dengkil-Selangor-1-scaled.png'
+    ]
+  },
+  {
+    id:'setia-alam-park',
+    name:'Setia Alam Active Park',
+    location:'Bandar Setia Alam, Selangor',
+    category:'Public Park',
+    client:'SP Setia Group',
+    type:'Public Park & Recreation',
+    status:'Completed',
+    award:'—',
+    desc:'A major community public park serving residents of the Bandar Setia Alam township, this active park was designed by LandArc to provide multi-generational recreational facilities integrated seamlessly into a rich tropical landscape. The design features jogging tracks, fitness nodes, playgrounds and extensive green corridors that prioritise ecology and community wellbeing.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/02/IMG_20220422_110654-scaled.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/04/Picture35.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/06/Setia-Alam-Active-Park-Bandar-Setia-Alam-Selangor-1-scaled.png'
+    ]
+  },
+  {
+    id:'ecohill-walk',
+    name:'Ecohill Walk',
+    location:'Semenyih, Selangor',
+    category:'Commercial',
+    client:'Setia Ecohill Sdn Bhd (SP Setia Group)',
+    type:'Retail / Town Centre',
+    status:'Completed',
+    award:'ILAM Honour 2023',
+    desc:'Ecohill Walk is an award-winning lifestyle retail and commercial precinct within the Setia Ecohill township. LandArc\'s landscape design created a vibrant streetscape with shaded walkways, water features, curated planting and activated public spaces that draw the community together. The project received an ILAM Honour Award in 2023.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/Setia-EcoHill-Mall-Semenyih-Selangor-scaled.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Setia-EcoHill-Mall-Semenyih-Selangor-1-scaled.png'
+    ]
+  },
+  {
+    id:'setia-greens',
+    name:'Setia Greens',
+    location:'Pulau Pinang',
+    category:'Residential',
+    client:'SP Setia Group',
+    type:'Township Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Setia Greens is a green-themed residential development in Penang where nature is woven into every aspect of the living environment. LandArc designed generous green buffers, park connectors, feature water bodies and tropical planting to create a truly verdant township setting.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/Setia-Greens-Pulau-Pinang.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Setia-Greens-Pulau-Pinang-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Setia-Greens-Pulau-Pinang-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'ijm-bayouri',
+    name:'IJM Bayouri',
+    location:'Pulau Pinang',
+    category:'Residential',
+    client:'IJM Land',
+    type:'High-Rise Residential',
+    status:'Completed',
+    award:'—',
+    desc:'IJM Bayouri is a premium residential development in Penang by IJM Land. LandArc designed an elevated podium landscape featuring a resort-style leisure deck, tropical planting and curated outdoor living spaces that provide residents with a private sanctuary above the city.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/IJM-Bayouri-Pulau-Pinang.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/IJM-Bayouri-Pulau-Pinang-1-scaled.png'
+    ]
+  },
+  {
+    id:'setia-reflections',
+    name:'Setia Reflections',
+    location:'Pulau Pinang',
+    category:'Residential',
+    client:'SP Setia Group',
+    type:'High-Rise Residential',
+    status:'Completed',
+    award:'ILAM Honour 2014',
+    desc:'Setia Reflections is a waterfront luxury condominium on the Penang waterfront that received the ILAM Honour Award in 2014. LandArc\'s landscape design drew inspiration from its reflective water surrounds, incorporating mirror pools, tropical softscaping and resort-grade amenity spaces that make this one of Penang\'s most coveted addresses.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/SETIA-REFLECTION2.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Setia-Reflections-Pulau-Pinang-1-scaled.png'
+    ]
+  },
+  {
+    id:'eco-meadows',
+    name:'Eco Meadows',
+    location:'Jawi, Pulau Pinang',
+    category:'Residential',
+    client:'EcoWorld Development',
+    type:'Township Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Eco Meadows is a sustainable residential township in Jawi, Penang developed under EcoWorld\'s eco-living philosophy. LandArc designed the community landscapes to reflect the development\'s green commitment — featuring native planting, ecological corridors, naturalised water features and interconnected walkways that nurture both biodiversity and community life.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/ECO-MEADOWS-1.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Eco-Meadows-Jawi-Pulau-Pinang-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Eco-Meadows-Jawi-Pulau-Pinang-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'ferrenghi',
+    name:'Ferrenghi Residence 2',
+    location:'Pulau Pinang',
+    category:'Residential',
+    client:'SP Setia Group',
+    type:'Beachfront Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Set against Penang\'s scenic Batu Ferringhi beachfront, Ferrenghi Residence 2 demanded a landscape strategy that celebrates its exceptional coastal setting. LandArc\'s design incorporates resort-style pool landscaping, tropical planting, and outdoor living spaces that capture panoramic sea views and connect residents with the natural coastal environment.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/Ferrenghi-Residence-2-Pulau-Pinang-min-scaled.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Ferrenghi-Residence-2-Pulau-Pinang-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Ferrenghi-Residence-2-Pulau-Pinang-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'amari',
+    name:'Amari Spice Hotel',
+    location:'Bayan Lepas, Pulau Pinang',
+    category:'Hospitality',
+    client:'SP Setia Group',
+    type:'Hotel / Hospitality',
+    status:'Completed',
+    award:'—',
+    desc:'Adjacent to the SPICE Convention Centre, the Amari Spice Hotel is a luxury international hotel that required its landscape to reflect both tropical elegance and its convention-hub context. LandArc designed the hotel\'s outdoor spaces including pool decks, arrival landscaping and interconnecting gardens to the SPICE complex.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/04/3-1-scaled.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Amari-Spice-Hotel-Bayan-Lepas-Pulau-Pinang-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Amari-Spice-Hotel-Bayan-Lepas-Pulau-Pinang-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'residensi22',
+    name:'Residensi 22 Mont Kiara',
+    location:'Mont Kiara, Kuala Lumpur',
+    category:'Residential',
+    client:'SkyWorld Development',
+    type:'Luxury High-Rise',
+    status:'Completed',
+    award:'—',
+    desc:'Residensi 22 is a prestigious luxury condominium in the coveted Mont Kiara enclave of Kuala Lumpur. LandArc designed a resort-calibre rooftop and podium landscape featuring a lap pool, tropical leisure deck, sky gardens and premium planting — setting a new benchmark for luxury urban living in KL.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/05/Residensi-22-Mont-Kiara-Kuala-Lumpur.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Residensi-22-Mont-Kiara-Kuala-Lumpur-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Residensi-22-Mont-Kiara-Kuala-Lumpur-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'doubletree',
+    name:'DoubleTree by Hilton iCity',
+    location:'Shah Alam, Selangor',
+    category:'Hospitality',
+    client:'i-City Properties',
+    type:'Hotel / Hospitality',
+    status:'Completed',
+    award:'—',
+    desc:'The DoubleTree by Hilton at iCity Shah Alam required a hotel landscape befitting an international five-star brand. LandArc designed lush arrival gardens, pool deck landscapes and perimeter planting schemes that create a resort-like ambience for hotel guests while seamlessly connecting to the greater i-City development.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/05/DoubleTree-Icity-Shah-Alam-Selangor-scaled.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/DoubleTree-Icity-Shah-Alam-Selangor-1-1-2-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/DoubleTree-Icity-Shah-Alam-Selangor-1-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'brook',
+    name:'Brook Residences',
+    location:'Pulau Pinang',
+    category:'Residential',
+    client:'SP Setia Group',
+    type:'Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Brook Residences is a tranquil residential development in Penang designed to evoke the feeling of living beside a natural brook. LandArc\'s landscape integrates water features, lush planting and natural stone materials to create an environment that celebrates the gentle beauty of waterside living.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/05/Brook-Residences-Pulau-Pinang.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Brook-Residences-Pulau-Pinang-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Brook-Residences-Pulau-Pinang-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'setia-city-park',
+    name:'Setia City Park',
+    location:'Setia Alam, Selangor',
+    category:'Public Park',
+    client:'SP Setia Group',
+    type:'Public Park',
+    status:'Completed',
+    award:'—',
+    desc:'Setia City Park is a major urban park integrated within the Setia Alam township, designed to serve the growing residential population as a green civic heart. LandArc created a rich landscape programme including event lawns, shaded plazas, water features and ecological zones that establish the park as a premium community asset.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/05/Setia-City-Park-Setia-Alam-Selangor-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Setia-City-Park-Setia-Alam-Selangor-1-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Setia-City-Park-Setia-Alam-Selangor-2-1-scaled.png'
+    ]
+  },
+  {
+    id:'setia-v',
+    name:'Setia V-Residence',
+    location:'Pulau Pinang',
+    category:'Residential',
+    client:'Kay Pride Sdn Bhd (SP Setia Group)',
+    type:'High-Rise Residential',
+    status:'Completed',
+    award:'FIABCI Gold 2023 — High Rise Category',
+    desc:'Setia V-Residence is a luxury high-rise residential development that earned LandArc the prestigious FIABCI Gold Award in 2023 in the High Rise Category. The project features a resort-inspired sky deck, lap pool landscape, tropical planting and lushly landscaped podium levels — creating a five-star residential environment that stands among the finest in Penang.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/05/V-Residences-Pulau-Pinang.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/V-Residences-Pulau-Pinang-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/V-Residences-Pulau-Pinang-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'trio',
+    name:'Trio Residences',
+    location:'Bukit Tinggi, Klang, Selangor',
+    category:'Residential',
+    client:'Titijaya Land',
+    type:'High-Rise Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Trio Residences in Bukit Tinggi, Klang is a three-tower residential development designed around a shared central amenity landscape. LandArc created a dynamic multi-level landscape featuring pool decks, sky terraces and lush tropical gardens connecting the three towers — establishing a strong community identity and premium living environment.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/05/Trio-Residences-Bukit-Tinggi-Klang-Selangor.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/05/Trio-Residences-Bukit-Tinggi-Klang-Selangor-2-1-scaled.png',
+      'https://landarc97.com/wp-content/uploads/2025/05/Trio-Residences-Bukit-Tinggi-Klang-Selangor-1-1-scaled.png'
+    ]
+  },
+  {
+    id:'templer',
+    name:'Templer Residence',
+    location:'Rawang, Selangor',
+    category:'Residential',
+    client:'Mah Sing Group',
+    type:'Landed Residential',
+    status:'Completed',
+    award:'—',
+    desc:'Templer Residence in Rawang draws its identity from the iconic Templer Park nature reserve nearby. LandArc embraced this natural heritage in the landscape design — creating lush naturalistic gardens, forest-edge planting and nature-integrated amenity spaces that give residents a genuine connection to Rawang\'s verdant landscape character.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/05/Templer-Residence-Rawang.jpeg',
+      'https://landarc97.com/wp-content/uploads/2025/06/Templer-Residence-Rawang-1-scaled.png'
+    ]
+  },
+  {
+    id:'spice',
+    name:'Setia SPICE Convention Centre',
+    location:'Bayan Lepas, Pulau Pinang',
+    category:'Convention & MICE',
+    client:'Eco Meridian Sdn Bhd (SP Setia Group)',
+    type:'Commercial / Convention',
+    status:'Completed',
+    award:'FIABCI Gold 2019 · ILAM Honour 2017',
+    desc:'One of Malaysia\'s landmark convention and exhibition centres, the Setia SPICE project presented a unique opportunity to create a grand tropical landscape setting befitting an international-grade MICE destination. LandArc designed sweeping arrival plazas, water features, lush tropical softscaping and integrated public realm spaces that frame the iconic building and enhance the visitor experience. The project earned both a FIABCI Gold Award and ILAM Honour Award.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/06/Setia-SPICE-Convention-Centre-Pulau-Pinang.jpg',
+      'https://landarc97.com/wp-content/uploads/2025/06/Setia-SPICE-Convention-Centre-Pulau-Pinang-1-scaled.png'
+    ]
+  },
+  {
+    id:'spice-aquatic',
+    name:'SPICE Aquatic Centre',
+    location:'Bayan Lepas, Pulau Pinang',
+    category:'Sports & Recreation',
+    client:'SP Setia Group',
+    type:'Public / Institutional',
+    status:'Completed',
+    award:'—',
+    desc:'Complementing the iconic SPICe complex, the SPICE Aquatic Centre required a bold landscape treatment to unite an Olympic-grade aquatic facility with its tropical setting. LandArc crafted deck planting, shaded walkways and lush perimeter landscaping that soften the facility\'s structure and create an inviting public realm for athletes and visitors alike.',
+    imgs:[
+      'https://landarc97.com/wp-content/uploads/2025/06/SPICE-Aquatic-Pulau-Pinang.jpg'
+    ]
+  }
+];
+
+let currentProjIndex = 0;
+
+function openShowcase(projId) {
+  const idx = PROJECTS.findIndex(p => p.id === projId);
+  if (idx === -1) return;
+  currentProjIndex = idx;
+  renderShowcase(idx);
+  const overlay = document.getElementById('showcaseOverlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  overlay.scrollTop = 0;
+}
+
+function closeShowcase() {
+  document.getElementById('showcaseOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderShowcase(idx) {
+  const p = PROJECTS[idx];
+  const overlay = document.getElementById('showcaseOverlay');
+
+  const prev = PROJECTS[idx - 1];
+  const next = PROJECTS[idx + 1];
+
+  const galleryHTML = p.imgs.map((src, i) =>
+    `<div class="sc-img" onclick="openLightbox('${src}')"><img src="${src}" alt="${p.name}" loading="lazy"></div>`
+  ).join('');
+
+  overlay.innerHTML = `
+    <div class="showcase-inner">
+      <div class="sc-nav">
+        <button class="sc-back" onclick="closeShowcase()">Back to Projects</button>
+        <div class="sc-proj-title">${p.name}</div>
+        <div class="sc-count">${idx + 1} / ${PROJECTS.length}</div>
+      </div>
+      <div class="sc-hero">
+        <img src="${p.imgs[0]}" alt="${p.name}" loading="eager" decoding="async">
+        <div class="sc-hero-info">
+          <div class="sc-cat-badge">${p.category}</div>
+          <h1 class="sc-h1">${p.name}</h1>
+          <div class="sc-loc">${p.location}</div>
+        </div>
+      </div>
+      <div class="sc-meta">
+        <div class="sc-meta-item"><div class="sc-meta-lbl">Client</div><div class="sc-meta-val">${p.client}</div></div>
+        <div class="sc-meta-item"><div class="sc-meta-lbl">Type</div><div class="sc-meta-val">${p.type}</div></div>
+        <div class="sc-meta-item"><div class="sc-meta-lbl">Status</div><div class="sc-meta-val">${p.status}</div></div>
+        <div class="sc-meta-item"><div class="sc-meta-lbl">Award</div><div class="sc-meta-val">${p.award}</div></div>
+      </div>
+      <div class="sc-gallery">
+        <div class="sc-gallery-lbl">Project Photography · ${p.imgs.length} image${p.imgs.length>1?'s':''}</div>
+        <div class="sc-gallery-grid imgs-${Math.min(p.imgs.length,6)}">${galleryHTML}</div>
+      </div>
+      <div class="sc-desc">
+        <div class="sc-desc-title">About This Project</div>
+        <p class="sc-desc-body">${p.desc}</p>
+      </div>
+      <div class="sc-proj-nav">
+        ${prev ? `<button class="sc-pn" onclick="navigateShowcase(${idx-1})"><div class="sc-pn-dir">← Previous</div><div class="sc-pn-name">${prev.name}</div><div class="sc-pn-loc">${prev.location}</div></button>` : '<div class="sc-pn" style="opacity:.2;cursor:default;"><div class="sc-pn-dir">← Previous</div><div class="sc-pn-name">—</div></div>'}
+        ${next ? `<button class="sc-pn" onclick="navigateShowcase(${idx+1})"><div class="sc-pn-dir">Next →</div><div class="sc-pn-name">${next.name}</div><div class="sc-pn-loc">${next.location}</div></button>` : '<div class="sc-pn" style="opacity:.2;cursor:default;text-align:right;border-left:1px solid rgba(255,255,255,.06);"><div class="sc-pn-dir">Next →</div><div class="sc-pn-name">—</div></div>'}
+      </div>
+    </div>
+    <div class="sc-lightbox" id="scLightbox" onclick="closeLightbox()">
+      <button class="sc-lb-close" onclick="closeLightbox()">✕</button>
+      <img id="scLbImg" src="" alt="">
+    </div>
+  `;
+}
+
+function navigateShowcase(idx) {
+  currentProjIndex = idx;
+  renderShowcase(idx);
+  document.getElementById('showcaseOverlay').scrollTop = 0;
+}
+
+function openLightbox(src) {
+  const lb = document.getElementById('scLightbox');
+  document.getElementById('scLbImg').src = src;
+  lb.classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('scLightbox')?.classList.remove('open');
+}
+
+// Wire up project cards to showcase
+document.querySelectorAll('#projTrack .pi').forEach(card => {
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', e => {
+    if (card.classList.contains('is-dragging')) return;
+    const name = card.querySelector('.pi-name')?.textContent?.trim() || '';
+    // match by partial name
+    const proj = PROJECTS.find(p => name.toLowerCase().includes(p.name.toLowerCase().split(' ').slice(0,2).join(' ').toLowerCase()) || p.name.toLowerCase().includes(name.toLowerCase().split(' ').slice(0,2).join(' ').toLowerCase()));
+    if (proj) openShowcase(proj.id);
+  });
+});
+
+// ESC to close
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('scLightbox')?.classList.contains('open')) { closeLightbox(); }
+    else { closeShowcase(); }
+  }
+});
+</script>
+
+<!-- ═══ PROJECT SHOWCASE OVERLAY ═══ -->
+<div class="showcase-overlay" id="showcaseOverlay"></div>
+
+</body>
+</html>
